@@ -1,42 +1,16 @@
 version: "3.9"
 
-x-common-variables: &common-variables
-  NODE_ENV: "development"
-  SESION_STORAGE_HOST: redis
-  SESION_STORAGE_PORT: 6379
-  MONGO_URL: "mongodb://mongo:27017"
-  MONGO_DBNAME: "dbname"
-
 services:
 
-  redis:
-    image: redis:4.0
-    container_name: redis
-    ports:
-      - "6379:6379"
-  
-  mongo:
-    image: mongo:latest
-    container_name: mongo
-    depends_on:
-      - redis
-    ports:
-      - "27017:27017"
-      
-  www:
+  archivospublicos:
     build:
       context: .
       dockerfile: Dockerfile.dev
-    depends_on:
-      - mongo
-    image: www:0.0.1
-    container_name: www
+    image: archivospublicos:0.0.1
+    container_name: archivospublicos
     volumes:
       - .:/srv/app
       - /srv/app/node_modules
-      - /srv/app/frontend/assets/bower_components
-    environment:
-       <<: *common-variables
-       application_name: 'www'
+      - /srv/app/frontend/bower_components
     ports:
-      - "80:80"
+      - "2201:80"
