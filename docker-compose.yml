@@ -5,7 +5,7 @@ services:
   archivospublicos:
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     image: archivospublicos:0.0.1
     container_name: archivospublicos
     volumes:

@@ -42,7 +42,7 @@
 		
 		logger.info('start server');
 		server.listen(80, function(){
-			logger.info("server started in 800 port");
+			logger.info("server started in 80 port");
 		});
 		
 	}catch(e){
