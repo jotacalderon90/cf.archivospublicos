@@ -89,6 +89,9 @@ iframe{
 	font-weight: bold;
 }
 /*MODAL*/
+.modal{
+	padding-right: 0px !important;/*que raro, deja en 17px nose de donde*/
+}
 .modal-dialog{
 	margin: 0;
 	width: 100%;
@@ -322,6 +325,7 @@ textarea.cke_source{
 	background: black;
 	z-index: 9999;
 	opacity: 0.5;
+	top: 0;
 }
 .loader i{
 	color: white;
