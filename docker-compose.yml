@@ -9,8 +9,8 @@ services:
     image: archivospublicos:0.0.1
     container_name: archivospublicos
     volumes:
-      - .:/srv/app
-      - /srv/app/node_modules
-      - /srv/app/frontend/bower_components
+      - .:/srv/cf.archivospublicos
+      - /srv/cf.archivospublicos/node_modules
+      - /srv/cf.archivospublicos/frontend/bower_components
     ports:
       - "2201:80"
