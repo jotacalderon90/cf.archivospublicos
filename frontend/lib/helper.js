@@ -159,6 +159,16 @@ document.helper = {
 				}
 			}
 		});	
+	},
+	sortArrayByField: function(coll,field){
+		return coll.sort(function (a, b) {
+			if (a[field] > b[field]) {
+				return 1;
+			}
+			if (a[field] < b[field]) {
+				return -1;
+			}
+			return 0;
+		});
 	}
-
 }
