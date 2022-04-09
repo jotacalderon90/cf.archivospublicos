@@ -69,7 +69,7 @@ document.helper = {
 		cadena = cadena.replace(/ñ/gi,"n");
 		return cadena;
 	},
-	createService: function(METHOD,URL,headerContentType){
+	createService: function(METHOD,URL,HEADERS){
 		METHOD = METHOD.toUpperCase();
 		
 		const URIBuild = function(uri,params){
@@ -79,7 +79,7 @@ document.helper = {
 			return uri;
 		}
 			
-		const execute = function(method,url,body,headerContentType){
+		const execute = function(method,url,body,HEADERS){
 			return new Promise(function(resolve, reject) {
 				const xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
@@ -103,10 +103,15 @@ document.helper = {
 					}
 				};
 				xhttp.open(method,url);
-				if(body!=undefined){
-					if(headerContentType!=""){
-						xhttp.setRequestHeader("Content-Type", headerContentType);
+				
+				xhttp.setRequestHeader('Content-Type','application/json;charset=UTF-8');
+				if(HEADERS){
+					for(attr in HEADERS){
+						xhttp.setRequestHeader(attr, HEADERS[attr]);
 					}
+				}
+				
+				if(body!=undefined){
 					if(typeof body!="string"){
 						body = JSON.stringify(body);
 					}
@@ -119,11 +124,11 @@ document.helper = {
 		
 		if(METHOD == "GET" || METHOD == "DELETE"){
 			return function(params){
-				return execute(METHOD,URIBuild(URL,params),undefined,undefined);
+				return execute(METHOD,URIBuild(URL,params),undefined,HEADERS);
 			}
 		}else if(METHOD == "POST" || METHOD == "PUT"){
 			return function(params,body){
-				return execute(METHOD,URIBuild(URL,params),body,headerContentType || 'application/json;charset=UTF-8');
+				return execute(METHOD,URIBuild(URL,params),body,HEADERS);
 			}
 		}
 	},
