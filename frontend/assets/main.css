@@ -16,7 +16,7 @@ body{
 	background-size: cover;
 	font-family: 'roboto',Arial,Helvetica,sans-serif;
 	color: #444;
-	background-image: url('/media/img/background/main.jpg');
+	/*background-image: url('/media/img/background/main.jpg');*/
 	
 	overflow-x:scroll;
 	overflow-y:hidden;
