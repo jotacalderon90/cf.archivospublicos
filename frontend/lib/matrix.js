@@ -8,6 +8,8 @@
 		this.velocidad = 33;
 		this.opacity = 0.2;
 		$("#default_matrix_canvas").css("opacity",this.opacity);	
+		$("#default_matrix_canvas").css("position",'absolute');	
+		$("#default_matrix_canvas").css("z-index",'200');	
 		setInterval(()=>{this.draw()}, this.velocidad);	
 	}
 	//jc:2020.06.11:14:30:
