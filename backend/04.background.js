@@ -15,7 +15,7 @@ module.exports = {
 			const directory = 'media/img/background';
 			res.json({data: fs.readdirSync(process.cwd() + '/frontend/' + directory,"utf8").filter((row)=>{
 				return fs.statSync(path.join(process.cwd() + '/frontend/' + directory,row)).isFile();
-			}).map((r)=>{return directory + '/' + r})});
+			}).map((r)=>{return process.env.HOST_ARCHIVOSPUBLICOS + '/' + directory + '/' + r})});
 		}catch(e){
 			logger.info('ERROR:' + e.toString());
 			logger.info(e);
