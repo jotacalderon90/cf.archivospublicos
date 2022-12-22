@@ -2,11 +2,11 @@
 
 module.exports = {
 	
-	//@route('/admin/admin')
+	//@route('/filemanager/admin')
 	//@method(['get'])
 	//@roles(['root','admin'])
 	renderAdmin: function(req,res){
-		res.render('views/filemanager/admin');
+		res.render('filemanager/admin');
 	}
 	
 }
