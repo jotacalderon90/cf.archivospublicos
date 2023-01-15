@@ -1,4 +1,4 @@
-$('#form_contact').submit(async function(event){
+$(document).delegate('#form_contact').submit(async function(event){
 	event.preventDefault();
 	try{
 		if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.email.value)){
