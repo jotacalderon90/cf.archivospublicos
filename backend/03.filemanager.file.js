@@ -13,10 +13,10 @@ const decode = function(value){
 	return decodeURIComponent(new Buffer(value,"base64"));
 }
 
-const onError = function(res,e){
+const onError = function(req,res,e){
 	logger.info('ERROR:' + e.toString());
 	logger.info(e);
-	response.APIError(res,e);
+	response.APIError(req,res,e);
 }
 
 module.exports = {
@@ -32,7 +32,7 @@ module.exports = {
 			}).length;
 			res.send({data: response});
 		}catch(e){
-			onError(res,e);
+			onError(req,res,e);
 		}
 	},
 	
@@ -47,7 +47,7 @@ module.exports = {
 			});
 			res.send({data: response});
 		}catch(e){
-			onError(res,e);
+			onError(req,res,e);
 		}
 	},
 	
@@ -59,7 +59,7 @@ module.exports = {
 			fs.writeFileSync(directory + decode(req.params.id) + req.body.name, (req.body.content)?req.body.content:"");
 			res.send({data: true});
 		}catch(e){
-			onError(res,e);
+			onError(req,res,e);
 		}
 	},
 	
@@ -70,7 +70,7 @@ module.exports = {
 		try{
 			res.send({data: fs.readFileSync(directory + decode(req.params.id),"utf8")});
 		}catch(e){
-			onError(res,e);
+			onError(req,res,e);
 		}
 	},
 	
@@ -82,7 +82,7 @@ module.exports = {
 			fs.writeFileSync(directory + decode(req.params.id), req.body.content);
 			res.send({data: true});
 		}catch(e){
-			onError(res,e);
+			onError(req,res,e);
 		}
 	},
 	
@@ -94,7 +94,7 @@ module.exports = {
 			fs.unlinkSync(directory + decode(req.params.id));
 			res.send({data: true});
 		}catch(e){
-			onError(res,e);
+			onError(req,res,e);
 		}
 	},
 	
@@ -106,7 +106,7 @@ module.exports = {
 			fs.renameSync(directory + decode(req.params.id),directory + "/" + req.body.name);
 			res.send({data: true});
 		}catch(e){
-			onError(res,e);
+			onError(req,res,e);
 		}
 	},
 	
@@ -117,7 +117,7 @@ module.exports = {
 		try{
 			res.download(directory + decode(req.params.id));
 		}catch(e){
-			onError(res,e);
+			onError(req,res,e);
 		}
 	},
 	
@@ -128,7 +128,7 @@ module.exports = {
 		try{
 			res.sendFile(directory + decode(req.params.id));
 		}catch(e){
-			onError(res,e);
+			onError(req,res,e);
 		}
 	},
 	
@@ -153,7 +153,7 @@ module.exports = {
 			
 			res.send({data: true});
 		}catch(e){
-			onError(res,e);
+			onError(req,res,e);
 		}
 	}
 }

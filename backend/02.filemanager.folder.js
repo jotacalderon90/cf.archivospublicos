@@ -12,10 +12,10 @@ const decode = function(value){
 	return decodeURIComponent(new Buffer(value,"base64"));
 }
 
-const onError = function(res,e){
+const onError = function(req,res,e){
 	logger.info('ERROR:' + e.toString());
 	logger.info(e);
-	response.APIError(res,e);
+	response.APIError(req,res,e);
 }
 
 module.exports = {
@@ -32,7 +32,7 @@ module.exports = {
 			}).length;
 			res.send({data: response});
 		}catch(e){
-			onError(res,e);
+			onError(req,res,e);
 		}
 	},
 	
@@ -47,7 +47,7 @@ module.exports = {
 			});
 			res.send({data: response});
 		}catch(e){
-			onError(res,e);
+			onError(req,res,e);
 		}
 	},
 	
@@ -59,7 +59,7 @@ module.exports = {
 			fs.mkdirSync(directory + decode(req.params.id) + req.body.name);
 			res.send({data: true});
 		}catch(e){
-			onError(res,e);
+			onError(req,res,e);
 		}
 	},
 	
@@ -71,7 +71,7 @@ module.exports = {
 			fs.renameSync(directory + decode(req.params.id), directory + "/" + req.body.name);
 			res.send({data: true});
 		}catch(e){
-			onError(res,e);
+			onError(req,res,e);
 		}
 	},
 	
@@ -83,7 +83,7 @@ module.exports = {
 			fs.rmdirSync(directory + decode(req.params.id));
 			res.send({data: true});
 		}catch(e){
-			onError(res,e);
+			onError(req,res,e);
 		}
 	}
 }

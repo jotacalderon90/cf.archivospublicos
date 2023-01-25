@@ -19,7 +19,7 @@ module.exports = {
 		}catch(e){
 			logger.info('ERROR:' + e.toString());
 			logger.info(e);
-			response.APIError(res,e);
+			response.APIError(req,res,e);
 		}
 	}
 };

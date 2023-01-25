@@ -8,10 +8,10 @@ const response = require('./lib/response');
 
 const directory = process.cwd() + "/frontend/";
 
-const onError = function(res,e){
+const onError = function(req,res,e){
 	logger.info('ERROR:' + e.toString());
 	logger.info(e);
-	response.APIError(res,e);
+	response.APIError(req,res,e);
 }
 
 module.exports = {
@@ -36,7 +36,7 @@ module.exports = {
 			};
 			res.send({data: getDirectory(directory,"/")});
 		}catch(e){
-			onError(res,e);
+			onError(req,res,e);
 		}
 	}
 }

@@ -4,10 +4,10 @@ const logger = require('./lib/log')('route.filemanager.default');
 const response = require('./lib/response');
 const accesscontrol = require('./lib/accesscontrol');
 
-const onError = function(res,e){
+const onError = function(req,res,e){
 	logger.info('ERROR:' + e.toString());
 	logger.info(e);
-	response.APIError(res,e);
+	response.APIError(req,res,e);
 }
 
 module.exports = {
@@ -19,7 +19,7 @@ module.exports = {
 			req.user = await accesscontrol.getUser(req);
 			res.send({data: req.user});
 		}catch(e){
-			onError(res,e);
+			onError(req,res,e);
 		}
 	}
 }
