@@ -1,6 +1,10 @@
 ﻿app.controller("myCtrl", function($scope){
 	this.refresh = function(){
-		$scope.$digest(function(){});
+		try{
+			$scope.$digest(function(){});
+		}catch(e){
+			console.log('this.refresh!',e);
+		}
 	};
 	(async ()=>{
 		for(module in app.modules){
