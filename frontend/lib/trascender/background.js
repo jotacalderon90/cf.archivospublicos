@@ -1,5 +1,5 @@
 app.modules.background = function(parent){
-	this.service = document.helper.createService('GET','/api/background/collection');
+	this.service = createService('GET','/api/background/collection');
 }
 
 app.modules.background.prototype.start = async function(){
