@@ -1,12 +1,19 @@
-app.modules.background = function(parent){
+const background = function(parent){
 	this.service = createService('GET','/api/background/collection');
 }
 
-app.modules.background.prototype.start = async function(){
-	const coll = (await this.service()).map((r)=>{return {image: r};});
+background.prototype.start = async function(){
+	const images = await this.service();
+	if(!images.data || images.data.length==0){
+		return;
+	}
 	jQuery(function($) {
 		$.supersized({    
-			slides: coll
+			slides: images.data.map((image)=>{
+				return {image: image};
+			})
 		});
 	});
 }
+
+app.modules.background = background;

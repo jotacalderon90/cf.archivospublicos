@@ -16,7 +16,8 @@
 				}
 			}catch(e){
 				$('.loader').fadeOut();
-				myError("Error al iniciar " + module, e.toString());
+				//myError("Error al iniciar " + module, e.toString());
+				alert("Error: " + module + '\n' +  e.toString());
 				console.log(e);
 			}
 		}
