@@ -26,7 +26,7 @@ background.prototype.start = async function(){
 background.prototype.supersized = function(images){
 	jQuery(function($) {
 		$.supersized({
-			slides: images.images
+			slides: images
 		})
 	});
 }
