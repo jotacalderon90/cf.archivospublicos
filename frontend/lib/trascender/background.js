@@ -1,6 +1,6 @@
 const background = function(parent){
 	this.service = createService('GET','/api/background/collection');
-	this.serviceWWW = createService('GET',location.protocol + '://' + location.host.replace(location.host.split('.')[0],'www') + '/api/background/collection');
+	this.serviceWWW = createService('GET',location.protocol + '//' + location.host.replace(location.host.split('.')[0],'www') + '/api/background/collection');
 }
 
 background.prototype.start = async function(){
