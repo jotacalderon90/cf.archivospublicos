@@ -411,7 +411,9 @@ const downloadXLSX = function(data,filename) {
 	XLSX.writeFile(workbook, filename + '.xlsx');
 }
 
+/*******/
 /*TOUCH*/
+/*******/
 const addTouchEvent = function(element,parent,callback){
 	
 	let xDown,yDown,detectSwipe;
@@ -457,4 +459,17 @@ const addTouchEvent = function(element,parent,callback){
 	document.querySelector(element).addEventListener('touchmove', (evt)=>{handleTouchMove(evt)});
 	document.querySelector(element).addEventListener('touchend', ()=>{parent[callback](detectSwipe);detectSwipe = null;});
 		
+}
+
+/******/
+/*COPY*/
+/******/
+const copy = function(content) {
+	const aux = document.createElement("input");
+	content = content.split("\n").join("");
+	aux.setAttribute("value", content);
+	document.body.appendChild(aux);
+	aux.select();
+	document.execCommand("copy");
+	document.body.removeChild(aux);
 }
