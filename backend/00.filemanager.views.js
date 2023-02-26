@@ -6,7 +6,7 @@ module.exports = {
 	//@method(['get'])
 	//@roles(['root','admin'])
 	renderAdmin: function(req,res){
-		res.render('filemanager/admin');
+		res.render('filemanager/admin/_',{user: req.user});
 	}
 	
 }
