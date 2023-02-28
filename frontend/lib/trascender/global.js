@@ -62,6 +62,18 @@ const createService = function(METHOD, URL, HEADERS) {
     }
 }
 
+const createServices = function(baseurl){
+	return {
+		total:		createService('GET', baseurl + '/total?query=:query'),
+		collection: createService('GET', baseurl + '/collection?query=:query&options=:options'),
+		tag:		createService('GET', baseurl + '/tag/collection'),
+		create:		createService('POST', baseurl),
+		read:		createService('GET', baseurl + '/:id'),
+		update:		createService('PUT', baseurl + '/:id'),
+		delete:		createService('DELETE', baseurl + '/:id')
+	};
+}
+
 const basicGetter = async function(field,service,get,body){
 	//try{
 		const response = await service(get,body,);
@@ -472,4 +484,19 @@ const copy = function(content) {
 	aux.select();
 	document.execCommand("copy");
 	document.body.removeChild(aux);
+}
+
+/************/
+/*SORT ARRAY*/
+/************/
+const sortArrayByField = function(coll,field){
+	return coll.sort(function (a, b) {
+		if (a[field] > b[field]) {
+			return 1;
+		}
+		if (a[field] < b[field]) {
+			return -1;
+		}
+		return 0;
+	});
 }
