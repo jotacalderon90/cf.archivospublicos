@@ -9,6 +9,7 @@
 	},
 	"dependencies": {
 		"cl.jotacalderon.cf.framework": "latest",
+		"express-recaptcha": "2.1.0",
 		"express-fileupload": "1.2.1"
 	},
 	"devDependencies": {		
