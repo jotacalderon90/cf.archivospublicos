@@ -2,9 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-
-const logger = require('./lib/log')('router.04.01.background');
-const response = require('./lib/response');
+const response = require('cl.jotacalderon.cf.framework/lib/response');
 
 module.exports = {
 	
@@ -17,8 +15,6 @@ module.exports = {
 				return fs.statSync(path.join(process.cwd() + '/frontend/' + directory,row)).isFile();
 			}).map((r)=>{return process.env.HOST_ARCHIVOSPUBLICOS + '/' + directory + '/' + r})});
 		}catch(e){
-			logger.info('ERROR:' + e.toString());
-			logger.info(e);
 			response.APIError(req,res,e);
 		}
 	}

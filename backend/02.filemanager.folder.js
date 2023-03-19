@@ -2,20 +2,11 @@
 
 const fs = require("fs");
 const path = require("path");
-
-const logger = require('./lib/log')('route.filemanager.folder');
-const response = require('./lib/response');
-
+const response = require('cl.jotacalderon.cf.framework/lib/response');
 const directory = process.cwd() + "/frontend/";
 
 const decode = function(value){
 	return decodeURIComponent(new Buffer(value,"base64"));
-}
-
-const onError = function(req,res,e){
-	logger.info('ERROR:' + e.toString());
-	logger.info(e);
-	response.APIError(req,res,e);
 }
 
 module.exports = {
@@ -32,7 +23,7 @@ module.exports = {
 			}).length;
 			res.send({data: response});
 		}catch(e){
-			onError(req,res,e);
+			response.APIError(req,res,e);
 		}
 	},
 	
@@ -47,7 +38,7 @@ module.exports = {
 			});
 			res.send({data: response});
 		}catch(e){
-			onError(req,res,e);
+			response.APIError(req,res,e);
 		}
 	},
 	
@@ -59,7 +50,7 @@ module.exports = {
 			fs.mkdirSync(directory + decode(req.params.id) + req.body.name);
 			res.send({data: true});
 		}catch(e){
-			onError(req,res,e);
+			response.APIError(req,res,e);
 		}
 	},
 	
@@ -71,7 +62,7 @@ module.exports = {
 			fs.renameSync(directory + decode(req.params.id), directory + "/" + req.body.name);
 			res.send({data: true});
 		}catch(e){
-			onError(req,res,e);
+			response.APIError(req,res,e);
 		}
 	},
 	
@@ -83,7 +74,7 @@ module.exports = {
 			fs.rmdirSync(directory + decode(req.params.id));
 			res.send({data: true});
 		}catch(e){
-			onError(req,res,e);
+			response.APIError(req,res,e);
 		}
 	}
 }
