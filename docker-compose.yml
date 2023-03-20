@@ -33,6 +33,7 @@ services:
     environment:
        <<: *common-variables
        HOST: "http://192.168.42.4:2201"
+       SESION_STORAGE_PREFIX: "archivospublicos:"
     ports:
       - "2201:80"
       
@@ -50,6 +51,7 @@ services:
     environment:
        <<: *common-variables
        HOST: "http://192.168.42.4:2202"
+       SESION_STORAGE_PREFIX: "account:"
     ports:
       - "2202:80"
       
