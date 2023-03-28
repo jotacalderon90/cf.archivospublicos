@@ -517,3 +517,14 @@ const textareaTab = function(e){
 		this.selectionEnd = start + 1;
 	}
 }
+
+/******/
+/*WAIT*/
+/******/
+const wait = function(TIME){
+	return new Promise(function(resolve, reject) {
+		setTimeout(function(){
+			resolve();
+		}, TIME);
+	});
+}
