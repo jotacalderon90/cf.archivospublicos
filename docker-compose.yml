@@ -1,59 +1,27 @@
 version: "3.9"
 
 x-common-variables: &common-variables
-  HOST_ARCHIVOSPUBLICOS: "http://192.168.42.4:2201"
-  HOST_ACCOUNT: "http://192.168.42.4:2202"
+  HOST_ARCHIVOSPUBLICOS: "http://192.168.100.6:2201"
   SESSION_SECRET: "trascender-con-sso"
   COOKIE_DOMAINs: ".jotace.cl"
-  MONGO_URL: "mongodb://host.docker.internal:27017"
-  MONGO_DBNAME: "miscolecciones"
-  SESION_STORAGE_HOST: redis
-  SESION_STORAGE_PORT: 6379
 
 services:
 
-  redis:
-    image: redis:latest
-    container_name: redis
-    ports:
-      - "6379:6379"
-         
   archivospublicos:
     build:
       context: .
       dockerfile: Dockerfile.dev
     image: archivospublicos:0.0.1
     container_name: archivospublicos
-    depends_on:
-      - redis
     volumes:
       - .:/srv/cf.archivospublicos/
       - /srv/cf.archivospublicos/node_modules
       - /srv/cf.archivospublicos/frontend/bower_components
     environment:
        <<: *common-variables
-       HOST: "http://192.168.42.4:2201"
-       SESION_STORAGE_PREFIX: "archivospublicos:"
+       HOST: "http://192.168.100.6:2201"
     ports:
       - "2201:80"
-      
-  account:
-    build:
-      context: ../cf.account
-      dockerfile: Dockerfile.dev
-    image: account:0.0.1
-    container_name: account
-    depends_on:
-      - archivospublicos
-    volumes:
-      - ../cf.account:/srv/cf.account/
-      - /srv/cf.account/node_modules
-    environment:
-       <<: *common-variables
-       HOST: "http://192.168.42.4:2202"
-       SESION_STORAGE_PREFIX: "account:"
-    ports:
-      - "2202:80"
       
 #networks:
 #  default:
