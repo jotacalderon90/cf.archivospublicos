@@ -1,7 +1,7 @@
 version: "3.9"
 
 x-common-variables: &common-variables
-  HOST_ARCHIVOSPUBLICOS: "http://192.168.100.6:2201"
+  HOST_ARCHIVOSPUBLICOS: "http://192.168.42.5:2201"
   SESSION_SECRET: "trascender-con-sso"
   COOKIE_DOMAINs: ".jotace.cl"
 
@@ -19,7 +19,7 @@ services:
       - /srv/cf.archivospublicos/frontend/bower_components
     environment:
        <<: *common-variables
-       HOST: "http://192.168.100.6:2201"
+       HOST: "http://192.168.42.5:2201"
     ports:
       - "2201:80"
       

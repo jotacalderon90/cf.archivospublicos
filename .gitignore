@@ -3,3 +3,6 @@ frontend/bower_components/*
 package-lock.json
 frontend/img/*
 frontend/media/*
+frontend/vue/node_modules
+frontend/vue/.gitignore
+frontend/vue/package-lock.json
