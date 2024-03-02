@@ -6,3 +6,4 @@ frontend/media/*
 frontend/vue/node_modules
 frontend/vue/.gitignore
 frontend/vue/package-lock.json
+.env.production
