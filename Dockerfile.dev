@@ -1,4 +1,7 @@
-FROM node:16.13.1 as build-stage
+FROM node:alpine
+
+# Instala Git por BOWER!
+RUN apk --no-cache add git
 
 CMD mkdir /srv/cf.archivospublicos
 
