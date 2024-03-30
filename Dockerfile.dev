@@ -14,6 +14,6 @@ RUN bower install --allow-root
 
 COPY [".", "/srv/cf.archivospublicos/"]
 
-EXPOSE 80
+EXPOSE $PORT
 
 CMD [ "npm", "run", "dev" ]
