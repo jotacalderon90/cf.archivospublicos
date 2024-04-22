@@ -1,4 +1,4 @@
-version: "3.9"
+version: "3.10"
 
 services:
 
@@ -11,7 +11,7 @@ services:
     volumes:
       - .:/srv/cf.archivospublicos/
       - /srv/cf.archivospublicos/node_modules
-      - /srv/cf.archivospublicos/frontend/bower_components
+      - /srv/cf.archivospublicos/frontend/assets/lib/bower_components
     environment:
        NODE_ENV: "development"
        PORT: ${PORT:-2201}
