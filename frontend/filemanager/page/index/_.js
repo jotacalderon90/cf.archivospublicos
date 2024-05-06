@@ -29,7 +29,6 @@ filemanager.prototype.close = function() {
 filemanager.prototype.clean = function() {
 	$("#ul_directory .selected").removeClass("selected");
 	this.archive = null;
-	this.parent.refresh();
 };
 
 filemanager.prototype.select = async function(li) {
@@ -109,7 +108,6 @@ filemanager.prototype.select = async function(li) {
 	} catch (e) {
 		console.log(e);
 	}
-	this.parent.refresh();
 };
 
 filemanager.prototype.createFolder = function(ulParent, id, directory) {

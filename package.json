@@ -8,8 +8,7 @@
 		"dev": "npx nodemon --legacy-watch app  --ignore frontend"
 	},
 	"dependencies": {
-		"cl.jotacalderon.cf.framework": "0.0.28",
-		"express-fileupload": "1.2.1"
+		"cl.jotacalderon.cf.framework": "0.0.28"
 	},
 	"devDependencies": {		
 		"nodemon": "latest"

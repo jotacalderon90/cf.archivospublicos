@@ -1,5 +1,5 @@
 ﻿
-const app = angular.module('myApp', []);
+const app = (typeof angular!='undefined')?angular.module('myApp', []):{};//TODO:angularjs en algun momento desaparecera
 app.modules = {};
 
 const createService = function(METHOD, URL, HEADERS) {
