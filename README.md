@@ -11,9 +11,13 @@ bower install --allow-root
 npm run dev
 ```
 
+Para producción reemplazar `npm run dev` por `npm run start`
+
 ## Probar con Docker
 
 ```bash
 docker-compose -f docker-compose.dev.yml build
 docker-compose -f docker-compose.dev.yml up
 ```
+
+Para producción quitar `-f docker-compose.dev.yml`
