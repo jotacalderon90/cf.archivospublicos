@@ -2,7 +2,7 @@
 
 cf.archivospublicos es un código fuente creado a partir de cf.framework. Este sistema es base para otras aplicaciones web ya que publicará los recursos estáticos más genéricos de toda la plataforma web. Aquí encontraremos archivos css, js, img, etc.
 
-## Instalación sin Docker
+## Probar con Node
 
 1.- Asegúrate de tener Node.js y npm instalados en tu sistema.
 2. Clona este repositorio o descárgalo como un archivo ZIP.
@@ -12,7 +12,7 @@ cf.archivospublicos es un código fuente creado a partir de cf.framework. Este s
 6. Ejecuta `bower install --allow-root` para instalar las dependencias del frontend.
 6. Ejecuta `npm run dev` para levantar sistema web.
 
-## Instalación con Docker
+## Probar con Docker
 
 1.- Asegúrate de tener Docker en tu sistema.
 2. Clona este repositorio o descárgalo como un archivo ZIP.
