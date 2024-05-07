@@ -1,6 +1,6 @@
 # Archivos Públicos
 
-cf.archivospublicos es un código fuente creado a partir de cf.framework. Este sistema es base para otras aplicaciones web ya que publicará los recursos estáticos más genéricos de toda la plataforma web. Aquí encontraremos archivos css, js, img, etc.
+cf.archivospublicos es un código fuente creado a partir de cf.framework. Este sistema es base para otras aplicaciones web ya que publica recursos estáticos genéricos que usara el resto de la plataforma web. Aquí encontraremos archivos css, js, img, etc.
 
 ## Probar con Node
 
