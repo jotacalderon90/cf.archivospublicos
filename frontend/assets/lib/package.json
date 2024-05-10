@@ -1,6 +1,6 @@
 {
-	"name": "cl.jotacalderon.cf.archivospublicos",
-	"description": "archivos publicos para paginas web",
+	"name": "cl.jotacalderon.cf.archivospublicos.frontend",
+	"description": "frontend de archivos publicos para paginas web",
 	"version": "0.0.1",
 	"private": true,
 	"dependencies": {

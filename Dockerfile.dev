@@ -1,19 +1,18 @@
 FROM node:alpine
 
-# Instala Git por BOWER!
-RUN apk --no-cache add git
-
 CMD mkdir /srv/cf.archivospublicos
 
-COPY ["package.json","bower.json",".bowerrc","/srv/cf.archivospublicos/"]
+COPY ["package.json","/srv/cf.archivospublicos/"]
+
+CMD mkdir -p /srv/cf.archivospublicos/frontend/assets/lib
+
+COPY ["frontend/assets/lib/package.json","/srv/cf.archivospublicos/frontend/assets/lib/"]
 
 WORKDIR /srv/cf.archivospublicos
 
 RUN npm install
 
-RUN npm install bower -g
-
-RUN bower install --allow-root
+RUN npm install -C frontend/assets/lib
 
 COPY [".", "/srv/cf.archivospublicos/"]
 
