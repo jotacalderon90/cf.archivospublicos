@@ -4,11 +4,13 @@ cf.archivospublicos es un código fuente creado a partir de cf.framework. Este s
 
 ## Probar con Node
 
+En windows puedes ejecutar el archivo script.ini.bat
+
 ```bash
 npm install
-npm install bower -g
-bower install --allow-root
+npm install -C frontend/assets/lib
 npm run dev
+pause
 ```
 
 Para producción reemplazar `npm run dev` por `npm run start`
