@@ -5,7 +5,7 @@ module.exports = {
 	//@route('/')
 	//@method(['get'])
 	index: function(req,res){
-		res.render('filemanager/page/index/_');
+		res.render('filemanager/_');
 	}
 	
 }

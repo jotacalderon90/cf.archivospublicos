@@ -1,5 +1,5 @@
 ﻿for (module in app.modules) {
-    app.modules[module] = new app.modules[module](app.modules);
+	app.modules[module] = new app.modules[module]();
 }
 Vue.createApp({
     data() {
@@ -10,7 +10,7 @@ Vue.createApp({
                 this.loader = true;
 				for (module in app.modules) {
 					if (this[module].start) {
-						await this[module].start();
+						await this[module].start(this);
 					}
 				}
                 this.loader = false;

@@ -1,20 +1,17 @@
-const filemanager = function(parent) {
-	this.parent = parent;
+const filemanager = function() {
 	this.service_read = createService('GET', ':path:id');
 	this.service_folder_collection = createService("GET", ":path:id/collection");
 	this.service_file_collection = createService("GET", ":path:id/collection");
 }
 
-filemanager.prototype.start = async function() {
-	
+filemanager.prototype.start = async function(parent) {
+	this.parent = parent;
 	this.createFolder(document.getElementById("ul_directory"), "d0", {
 		name: "/",
 		file: "/api/filemanager/file/",
 		folder: "/api/filemanager/folder/",
 		path: "/"
 	});
-
-	$('.loader').fadeOut();
 }
 
 filemanager.prototype.archive = null,
@@ -51,13 +48,13 @@ filemanager.prototype.select = async function(li) {
 			this.fullnameDOWNLOAD = (label.attr("data-api-file") + btoa(this.fullname) + "/download");
 			this.fullnameGET = (label.attr("data-api-file") + btoa(this.fullname) + "/getfile");
 			if (this.isTextFile) {
-				$(".loader").fadeIn();
+				this.parent.loader = true;
 				this.fileContent = await this.service_read({
 					id: btoa(this.fullname),
 					path: label.attr("data-api-file")
 				});
 				this.fileContent = this.fileContent.data;
-				$(".loader").fadeOut();
+				this.parent.loader = false;
 			} else if (this.isMediaFile) {
 				let child = null;
 				switch (this.type) {
@@ -123,6 +120,7 @@ filemanager.prototype.createFolder = function(ulParent, id, directory) {
 			let coll;
 			const newid = btoa(encodeURIComponent(labelParent.attr("data-api-path")));
 
+			this.parent.loader = true;
 			coll = await this.service_folder_collection({
 				id: newid,
 				path: labelParent.attr("data-api-folder")
@@ -158,6 +156,7 @@ filemanager.prototype.createFolder = function(ulParent, id, directory) {
 				}
 				element.srcElement.parentNode.lastChild.appendChild(li);
 			}
+			this.parent.loader = false;
 		} else {
 			element.srcElement.parentNode.lastChild.innerHTML = "";
 		}
