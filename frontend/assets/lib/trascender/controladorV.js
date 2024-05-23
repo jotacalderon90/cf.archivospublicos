@@ -5,15 +5,15 @@ Vue.createApp({
     data() {
         return {
             ...app.modules,
-            loader: false,
+            loader: { active: false, title: ''},
             mounthed: async function() {
-                this.loader = true;
+                this.loader.active = true;
 				for (module in app.modules) {
 					if (this[module].start) {
 						await this[module].start(this);
 					}
 				}
-                this.loader = false;
+                this.loader.active = false;
             }
         }
     },
