@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const helper = require('cl.jotacalderon.cf.framework/lib/helper');
 const response = require('cl.jotacalderon.cf.framework/lib/response');
-const directory = process.cwd() + "/frontend/";
+const directory = process.cwd() + "/frontend/assets/";
 
 const decode = function(value){
 	return decodeURIComponent(new Buffer(value,"base64"));

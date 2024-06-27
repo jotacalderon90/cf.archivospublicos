@@ -3,7 +3,7 @@
 const fs = require("fs");
 const path = require("path");
 const response = require('cl.jotacalderon.cf.framework/lib/response');
-const directory = process.cwd() + "/frontend/";
+const directory = process.cwd() + "/frontend/assets/";
 
 
 module.exports = {
