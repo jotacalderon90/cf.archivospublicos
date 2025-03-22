@@ -10,7 +10,7 @@ COPY ["frontend/assets/lib/package.json","/srv/cf.archivospublicos/frontend/asse
 
 WORKDIR /srv/cf.archivospublicos
 
-RUN npm install --only=production
+RUN npm install --omit=dev
 
 RUN npm install -C frontend/assets/lib
 
