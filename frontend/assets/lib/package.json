@@ -5,7 +5,7 @@
 	"private": true,
 	"dependencies": {
 		"angular": "1.8.2",
-		"axios": "1.6.6",
+		"axios": "1.8.4",
 		"bootstrap": "3.3.7",
 		"luxon": "3.5.0",
 		"ckeditor": "4.5.11",
