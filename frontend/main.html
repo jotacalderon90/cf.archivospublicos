@@ -23,13 +23,10 @@
 		<script src="{{data:process.env.HOST}}/assets/lib/node_modules/jquery/dist/jquery.min.js"></script>
 		<script src="{{data:process.env.HOST}}/assets/lib/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 		<script src="{{data:process.env.HOST}}/assets/lib/node_modules/axios/dist/axios.min.js"></script>
-		<script src="{{data:process.env.HOST}}/assets/lib/moment.js"></script>
-		<script src="{{data:process.env.HOST}}/assets/lib/moment-with-locales.js"></script>
-		<script src="{{data:process.env.HOST}}/assets/lib/vue3.4.26.js"></script>
-	
+		<script src="{{data:process.env.HOST}}/assets/lib/node_modules/vue/dist/vue.global.prod.js"></script>
 		<script src="{{data:process.env.HOST}}/assets/lib/trascender/global.js"></script>
 		<!--define:script-->
-				
+		
 		<div id="app">
 			<div id="loader" v-show="loader.active">
 				<i class="fa fa-spin fa-spinner"></i> {{loader.title}}
