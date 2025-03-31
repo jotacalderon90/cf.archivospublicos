@@ -2,7 +2,7 @@
 
 const fs = require("fs");
 const path = require("path");
-const helper = require('cl.jotacalderon.cf.framework/lib/helper');
+const logger = require('cl.jotacalderon.cf.framework/lib/log')('api.02.filemanager.file');
 const response = require('cl.jotacalderon.cf.framework/lib/response');
 const directory = process.cwd() + "/frontend/assets/";
 
@@ -21,8 +21,9 @@ module.exports = {
 				return fs.statSync(path.join(dir,row)).isFile();
 			}).length;
 			res.send({data: response});
-		}catch(e){
-			response.APIError(req,res,e);
+		}catch(error){
+			logger.error(error);
+			response.APIError(req,res,error);
 		}
 	},
 	
@@ -35,8 +36,9 @@ module.exports = {
 				return fs.statSync(path.join(dir,row)).isFile();
 			});
 			res.send({data: response});
-		}catch(e){
-			response.APIError(req,res,e);
+		}catch(error){
+			logger.error(error);
+			response.APIError(req,res,error);
 		}
 	},
 	
@@ -45,8 +47,9 @@ module.exports = {
 	read: async function(req,res){
 		try{
 			res.send({data: fs.readFileSync(directory + decode(req.params.id),"utf8")});
-		}catch(e){
-			response.APIError(req,res,e);
+		}catch(error){
+			logger.error(error);
+			response.APIError(req,res,error);
 		}
 	},
 	
@@ -55,8 +58,9 @@ module.exports = {
 	download: async function(req,res){
 		try{
 			res.download(directory + decode(req.params.id));
-		}catch(e){
-			response.APIError(req,res,e);
+		}catch(error){
+			logger.error(error);
+			response.APIError(req,res,error);
 		}
 	},
 	
@@ -65,8 +69,9 @@ module.exports = {
 	get: async function(req,res){
 		try{
 			res.sendFile(directory + decode(req.params.id));
-		}catch(e){
-			response.APIError(req,res,e);
+		}catch(error){
+			logger.error(error);
+			response.APIError(req,res,error);
 		}
 	}
 }

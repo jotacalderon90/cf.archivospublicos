@@ -2,6 +2,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const logger = require('cl.jotacalderon.cf.framework/lib/log')('api.02.filemanager.folder');
 const response = require('cl.jotacalderon.cf.framework/lib/response');
 const directory = process.cwd() + "/frontend/assets/";
 
@@ -10,7 +11,6 @@ const decode = function(value){
 }
 
 module.exports = {
-
 	
 	//@route('/api/filemanager/folder/:id/total')
 	//@method(['get'])
@@ -21,8 +21,9 @@ module.exports = {
 				return !fs.statSync(path.join(dir,row)).isFile();
 			}).length;
 			res.send({data: response});
-		}catch(e){
-			response.APIError(req,res,e);
+		}catch(error){
+			logger.error(error);
+			response.APIError(req,res,error);
 		}
 	},
 	
@@ -35,8 +36,9 @@ module.exports = {
 				return !fs.statSync(path.join(dir,row)).isFile();
 			});
 			res.send({data: response});
-		}catch(e){
-			response.APIError(req,res,e);
+		}catch(error){
+			logger.error(error);
+			response.APIError(req,res,error);
 		}
 	}
 	
