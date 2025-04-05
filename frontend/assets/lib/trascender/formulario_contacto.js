@@ -7,7 +7,7 @@ $('body').delegate('#form_contact','submit', async function(event){
 		if(this.message.value.trim()==''){
 			throw('Ingrese un mensaje válido');
 		}
-		$('.loader').fadeIn();
+		$('#loader').fadeIn();
 		await fetch('https://mailing.jotace.cl/api/mailing/multidomain', {
 			method: 'POST',
 			headers: {
@@ -20,11 +20,11 @@ $('body').delegate('#form_contact','submit', async function(event){
 				'g-recaptcha-response': grecaptcha.getResponse()
 			})
 		});
-		$('.loader').fadeOut();
+		$('#loader').fadeOut();
 		alert('Hemos recibido su mensaje\nnos contactaremos lo mas pronto posible');
 		location.href = '/';		
 	}catch(error){
-		$('.loader').fadeOut();
+		$('#loader').fadeOut();
 		alert(error);
 	}
 });

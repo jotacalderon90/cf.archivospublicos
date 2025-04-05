@@ -4,7 +4,7 @@ $('body').delegate('#form_subscription', 'submit', async function(event){
 		if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.email.value)){
 			throw('Ingrese un email válido');
 		}
-		$('.loader').fadeIn();
+		$('#loader').fadeIn();
 		await fetch('https://mailing.jotace.cl/api/mailing/multidomain', {
 			method: 'POST',
 			headers: {
@@ -17,11 +17,11 @@ $('body').delegate('#form_subscription', 'submit', async function(event){
 				'g-recaptcha-response': grecaptcha.getResponse()
 			})
 		});
-		$('.loader').fadeOut();
+		$('#loader').fadeOut();
 		alert('Subscripcion realizada con éxito\n');
 		location.href = '/';		
 	}catch(error){
-		$('.loader').fadeOut();
+		$('#loader').fadeOut();
 		alert(error);
 	}
 });
