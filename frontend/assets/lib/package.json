@@ -6,7 +6,6 @@
 	"dependencies": {
 		"angular": "1.8.2",
 		"vue": "3.4.26",
-		"axios": "1.8.4",
 		"luxon": "3.5.0",
 		"bootstrap": "3.3.7",
 		"ckeditor": "4.5.11",
