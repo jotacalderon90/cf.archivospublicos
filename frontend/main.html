@@ -4,6 +4,7 @@
 	
 		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<!--define:meta-->
 		
 		<title><!--define:title--></title>
 		
@@ -12,19 +13,20 @@
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
 		
-		<link rel="stylesheet" href="{{data:process.env.HOST}}/assets/lib/node_modules/bootstrap/dist/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="{{data:process.env.HOST}}/assets/lib/node_modules/font-awesome/css/font-awesome.min.css" />
-		<link rel="stylesheet" href="{{data:process.env.HOST}}/assets/lib/trascender/main.css" />
+		<link rel="stylesheet" href="{{data:process.env.HOST_ARCHIVOSPUBLICOS}}/assets/lib/node_modules/bootstrap/dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="{{data:process.env.HOST_ARCHIVOSPUBLICOS}}/assets/lib/node_modules/font-awesome/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="{{data:process.env.HOST_ARCHIVOSPUBLICOS}}/assets/lib/trascender/main.css" />
 		<!--define:head-->
 		
 	</head>
 	<body>
-		
-		<script src="{{data:process.env.HOST}}/assets/lib/node_modules/jquery/dist/jquery.min.js"></script>
-		<script src="{{data:process.env.HOST}}/assets/lib/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-		<script src="{{data:process.env.HOST}}/assets/lib/node_modules/axios/dist/axios.min.js"></script>
-		<script src="{{data:process.env.HOST}}/assets/lib/node_modules/vue/dist/vue.global.prod.js"></script>
-		<script src="{{data:process.env.HOST}}/assets/lib/trascender/global.js"></script>
+	
+		<script src="{{data:process.env.HOST_ARCHIVOSPUBLICOS}}/assets/lib/node_modules/jquery/dist/jquery.min.js"></script>
+		<script src="{{data:process.env.HOST_ARCHIVOSPUBLICOS}}/assets/lib/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="{{data:process.env.HOST_ARCHIVOSPUBLICOS}}/assets/lib/node_modules/axios/dist/axios.min.js"></script>
+		<script src="{{data:process.env.HOST_ARCHIVOSPUBLICOS}}/assets/lib/node_modules/luxon/build/global/luxon.min.js"></script>
+		<script src="{{data:process.env.HOST_ARCHIVOSPUBLICOS}}/assets/lib/node_modules/vue/dist/vue.global.prod.js"></script>
+		<script src="{{data:process.env.HOST_ARCHIVOSPUBLICOS}}/assets/lib/trascender/global.js"></script>
 		<!--define:script-->
 		
 		<div id="app">
@@ -34,7 +36,7 @@
 			<!--define:main-->
 		</div>
 		
-		<script src="{{data:process.env.HOST}}/assets/lib/trascender/controladorV.js"></script>
+		<script src="{{data:process.env.HOST_ARCHIVOSPUBLICOS}}/assets/lib/trascender/controladorV.js"></script>
 		
 	</body>
 </html>
