@@ -13,39 +13,31 @@
 <!--define:main-->
 
 	<!--include:filemanager/section/nav-->
+	
 	<div class="container-fluid">
-		<div class="col-md-12">
-			<div class="row">
-				<div class="col-md-4">
-					<ul id="ul_directory"></ul>
+		<div class="row">
+			<aside class="border border-right col-md-3 col-lg-2 bg-body-tertiary min-vh-100 offcanvas-md offcanvas-end" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+				<ul id="ul_directory" class="mt-4"></ul>
+			</aside>
+			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" v-show="filemanager.archive!=null">
+				<div class="btn-group btn-group-sm mt-4">
+					<a class="btn btn-outline-primary" target="_blank" title="Descargar" v-show="filemanager.isFile" :href="filemanager.fullnameDOWNLOAD" >
+						<i class="fa fa-download"></i> Descargar
+					</a>
+					<a class="btn btn-outline-primary" target="_blank" title="Visualizar" v-show="filemanager.isFile" :href="filemanager.fullnameGET" >
+						<i class="fa fa-eye"></i> Visualizar
+					</a>
+					<button class="btn btn-outline-primary" v-on:click="filemanager.close()" title="Cerrar">
+						<i class="fa fa-close"></i> Cerrar
+					</button>
 				</div>
-				<div class="col-md-8">
-					<div v-show="filemanager.archive!=null">
-						<div class="btn-group btn-group-xs btn-group-justified" style="font-size: 10px;">
-							<div class="btn-group" role="group" v-show="filemanager.isFile" >
-								<a class="btn btn-default" :href="filemanager.fullnameDOWNLOAD" target="_blank" title="Descargar">
-								<i class="fa fa-download"></i> Descargar
-								</a>
-							</div>
-							<div class="btn-group" role="group" v-show="filemanager.isFile" >
-								<a class="btn btn-default" :href="filemanager.fullnameGET" target="_blank" title="Visualizar">
-								<i class="fa fa-eye"></i> Visualizar
-								</a>
-							</div>
-							<div class="btn-group" role="group">
-								<button class="btn btn-default" v-on:click="filemanager.close()" title="Cerrar">
-								<i class="fa fa-close"></i> Cerrar
-								</button>
-							</div>
-						</div>
-						<br>
-						<div v-show="filemanager.isFile">
-							<textarea rows="15" class="form-control" v-show="filemanager.isTextFile" v-model="filemanager.fileContent"></textarea>
-							<div class="panel-body dv-visualcontent" v-show="filemanager.isMediaFile"></div>
-						</div>	
-					</div>
-				</div>
-			</div>			
+				<br>
+				<br>
+				<div v-show="filemanager.isFile">
+					<textarea rows="15" class="form-control" v-show="filemanager.isTextFile" v-model="filemanager.fileContent"></textarea>
+					<div class="panel-body dv-visualcontent" v-show="filemanager.isMediaFile"></div>
+				</div>	
+			</main>
 		</div>
 	</div>
 
