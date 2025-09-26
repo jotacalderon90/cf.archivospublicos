@@ -23,3 +23,7 @@ docker-compose -f docker-compose.dev.yml up
 ```
 
 Para producción quitar `-f docker-compose.dev.yml`
+
+## Vulnerabilidades
+
+Ckeditor XSS Vulnerability. Moderado: Asumido temporalmente
