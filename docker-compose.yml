@@ -15,4 +15,4 @@ services:
        NODE_ENV: "production"
        PORT: ${PORT:-2201}
     ports:
-      - "${PORT:-2201}:2201"
+      - "127.0.0.1:2201:2201"
