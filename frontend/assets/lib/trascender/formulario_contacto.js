@@ -3,18 +3,21 @@ $('body').delegate('#form_contact','submit', async function(event){
 	try{
 		
     if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.email.value)){
-			throw('Ingrese un email válido');
+			alert('Ingrese un email válido');
+      return;
 		}
 		
     if(this.message.value.trim()==''){
-			throw('Ingrese un mensaje válido');
+			alert('Ingrese un mensaje válido');
+      return;
 		}
     
     let recaptcha = '';
     if(typeof grecaptcha === 'object'){
       recaptcha = grecaptcha.getResponse();
       if(recaptcha.trim() === '') {
-        throw('Ingrese recaptcha');
+        alert('Ingrese recaptcha');
+        return;
       }
     }
     
@@ -35,22 +38,22 @@ $('body').delegate('#form_contact','submit', async function(event){
 		
     $('#loader').fadeOut();
     
-    console.log(mailingResponse);
-		
     if(mailingResponse.status != 200) {
-      throw('No se pudo generar la notificación, por favor contacte por otro medio');
+      throw new Error(mailingResponse.status);
     }
     
     mailingResponse = await mailingResponse.json();
     
-    console.log(mailingResponse);
+    if(!mailingResponse.data) {
+      throw new Error(mailingResponse.data);
+    } 
     
     alert('Hemos recibido su mensaje\nnos contactaremos lo mas pronto posible');
-		
     location.href = '/';		
-	
+ 
   }catch(error){
 		$('#loader').fadeOut();
-		alert(error);
+		alert('No se pudo generar la notificación, por favor contacte por otro medio');
+    console.log(error);
 	}
 });
