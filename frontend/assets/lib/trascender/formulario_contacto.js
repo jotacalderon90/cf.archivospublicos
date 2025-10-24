@@ -20,7 +20,7 @@ $('body').delegate('#form_contact','submit', async function(event){
     
 		$('#loader').fadeIn();
     
-		const mailingResponse = await fetch('https://mailing.jotace.cl/api/mailing/multidomain', {
+		let mailingResponse = await fetch('https://mailing.jotace.cl/api/mailing/multidomain', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -37,6 +37,14 @@ $('body').delegate('#form_contact','submit', async function(event){
     
     console.log(mailingResponse);
 		
+    if(mailingResponse.status != 200) {
+      throw('No se pudo generar la notificación, por favor contacte por otro medio');
+    }
+    
+    mailingResponse = await mailingResponse.json();
+    
+    console.log(mailingResponse);
+    
     alert('Hemos recibido su mensaje\nnos contactaremos lo mas pronto posible');
 		
     location.href = '/';		
