@@ -8,7 +8,7 @@ $('body').delegate('#form_contact','submit', async function(event){
 			throw('Ingrese un mensaje válido');
 		}
 		$('#loader').fadeIn();
-		await fetch('https://mailing.jotace.cl/api/mailing/multidomain', {
+		const mailingResponse = await fetch('https://mailing.jotace.cl/api/mailing/multidomain', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -21,6 +21,7 @@ $('body').delegate('#form_contact','submit', async function(event){
 			})
 		});
 		$('#loader').fadeOut();
+    console.log(mailingResponse);
 		alert('Hemos recibido su mensaje\nnos contactaremos lo mas pronto posible');
 		location.href = '/';		
 	}catch(error){
