@@ -1,13 +1,25 @@
 $('body').delegate('#form_contact','submit', async function(event){
 	event.preventDefault();
 	try{
-		if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.email.value)){
+		
+    if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.email.value)){
 			throw('Ingrese un email válido');
 		}
-		if(this.message.value.trim()==''){
+		
+    if(this.message.value.trim()==''){
 			throw('Ingrese un mensaje válido');
 		}
+    
+    let recaptcha = '';
+    if(typeof grecaptcha === 'object'){
+      recaptcha = grecaptcha.getResponse();
+      if(recaptcha.trim() === '') {
+        throw('Ingrese recaptcha');
+      }
+    }
+    
 		$('#loader').fadeIn();
+    
 		const mailingResponse = await fetch('https://mailing.jotace.cl/api/mailing/multidomain', {
 			method: 'POST',
 			headers: {
@@ -17,14 +29,19 @@ $('body').delegate('#form_contact','submit', async function(event){
 				to: this.email.value,
 				message: this.message.value,
 				subject: 'Mensaje desde sitio web ' + document.location.hostname,
-				'g-recaptcha-response': grecaptcha.getResponse()
+				'g-recaptcha-response': recaptcha
 			})
 		});
-		$('#loader').fadeOut();
+		
+    $('#loader').fadeOut();
+    
     console.log(mailingResponse);
-		alert('Hemos recibido su mensaje\nnos contactaremos lo mas pronto posible');
-		location.href = '/';		
-	}catch(error){
+		
+    alert('Hemos recibido su mensaje\nnos contactaremos lo mas pronto posible');
+		
+    location.href = '/';		
+	
+  }catch(error){
 		$('#loader').fadeOut();
 		alert(error);
 	}
