@@ -401,11 +401,37 @@ const getFecha = function(data, type, row)  {
 }
 
 
-/*** */
-/*CSV*/
-/*** */
+/****************/
+/*DOWNLOAD FILES*/
+/****************/
+const downloadFile = function(blog,filename) {
+  
+  const nav = window.navigator;
+  
+  if (nav && typeof nav.msSaveOrOpenBlob === 'function') {
+    nav.msSaveOrOpenBlob(blob, filename);
+    return;
+  }
+  
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  
+  a.href = url;
+  a.download = filename;
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  a.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
+  
+  setTimeout(() => {
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }, 150);
+  
+}
+
+//20251112:no recuerdo donde se usa
 const downloadCSV = function(data, filename) {
-    const csvFile = new Blob([data], {type: "text/csv;charset=utf8"});
+  const csvFile = new Blob([data], {type: "text/csv;charset=utf8"});
 	const downloadLink = document.createElement("a");
 	downloadLink.download = filename;
 	downloadLink.href = window.URL.createObjectURL(csvFile);
@@ -413,7 +439,7 @@ const downloadCSV = function(data, filename) {
 	document.body.appendChild(downloadLink);
 	downloadLink.click();
 }
-
+//20251112:no recuerdo donde se usa
 const downloadXLSX = function(data,filename) {
 	console.log(data);
 	var workbook = XLSX.utils.book_new(),
@@ -422,6 +448,7 @@ const downloadXLSX = function(data,filename) {
 	workbook.Sheets["First"] = worksheet;
 	XLSX.writeFile(workbook, filename + '.xlsx');
 }
+
 
 /*******/
 /*TOUCH*/
