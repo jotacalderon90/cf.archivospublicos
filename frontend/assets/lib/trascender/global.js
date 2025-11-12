@@ -486,6 +486,30 @@ const copy = function(content) {
 	document.body.removeChild(aux);
 }
 
+const copyLarge = async function(content) {
+  try {
+    await navigator.clipboard.writeText(content);
+    return true;
+  } catch (err) {
+    // Fallback al método antiguo
+    const aux = document.createElement("textarea");
+    aux.value = content;
+    aux.style.position = "fixed";
+    aux.style.opacity = "0";
+    document.body.appendChild(aux);
+    aux.select();
+    
+    try {
+      document.execCommand("copy");
+      return true;
+    } catch (e) {
+      console.error("Error al copiar:", e);
+      return false;
+    } finally {
+      document.body.removeChild(aux);
+    }
+  }
+}
 /************/
 /*SORT ARRAY*/
 /************/
