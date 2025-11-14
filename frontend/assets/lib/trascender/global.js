@@ -62,6 +62,128 @@ const createService = function(METHOD, URL, HEADERS) {
     }
 }
 
+const createService2 = function(METHOD, URL, HEADERS) {
+  METHOD = METHOD.toUpperCase();
+
+  const URIBuild = function(uri, params = {}) {
+    for (let attr in params) {
+      uri = uri.replace(":" + attr, params[attr]);
+    }
+    return uri;
+  }
+
+  const execute = async function(method, url, body, HEADERS) {
+    // Retornamos una Promise para mantener la misma API que antes
+    return new Promise(async function(resolve, reject) {
+      try {
+        // Construimos headers (clonado para no mutar el HEADERS original)
+        const headersObj = Object.assign({}, HEADERS || {});
+        // Aseguramos Content-Type por defecto tal como en tu código original
+        if (!Object.keys(headersObj).some(h => h.toLowerCase() === 'content-type')) {
+          headersObj['Content-Type'] = 'application/json;charset=UTF-8';
+        }
+
+        const options = {
+          method: method,
+          headers: headersObj
+        };
+
+        // Sólo adjuntamos body para métodos que no sean GET/DELETE
+        if (body !== undefined && method !== 'GET' && method !== 'DELETE') {
+          options.body = (typeof body === 'string') ? body : JSON.stringify(body);
+        }
+
+        const resp = await fetch(url, options);
+
+        // Si el servidor devuelve 401 forzamos reload como en tu versión original
+        if (resp.status === 401) {
+          location.reload();
+        }
+
+        // Leemos como texto y luego intentamos parsear JSON (para replicar el try/catch original)
+        const text = await resp.text();
+
+        try {
+          const json = JSON.parse(text);
+          resolve(json);
+        } catch (parseErr) {
+          // Estructura similar al reject que usabas: { error: e, xhttp: xhttp }
+          // Aquí incluimos la response para depuración
+          reject({
+            error: parseErr,
+            response: resp,
+            text: text
+          });
+        }
+      } catch (fetchErr) {
+        // Errores de red u otros
+        reject({
+          error: fetchErr
+        });
+      }
+    });
+  }
+
+  if (METHOD == "GET" || METHOD == "DELETE") {
+    return function(params) {
+      return execute(METHOD, URIBuild(URL, params), undefined, HEADERS);
+    }
+  } else if (METHOD == "POST" || METHOD == "PUT") {
+    return function(params, body) {
+      return execute(METHOD, URIBuild(URL, params), body, HEADERS);
+    }
+  }
+}
+
+const createService3 = function(METHOD, URL, HEADERS = {}) {
+  const method = METHOD.toUpperCase();
+  const VALID_METHODS = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'];
+  
+  if (!VALID_METHODS.includes(method)) {
+    throw new Error(`Invalid HTTP method: ${METHOD}`);
+  }
+
+  const URIBuild = (uri, params = {}) => {
+    return Object.entries(params).reduce(
+      (acc, [key, value]) => acc.replace(`:${key}`, encodeURIComponent(value)),
+      uri
+    );
+  };
+
+  const execute = async (url, body) => {
+    const headers = new Headers({
+      'Content-Type': 'application/json;charset=UTF-8',
+      ...HEADERS
+    });
+
+    const options = { method, headers };
+    
+    if (body !== undefined && !['GET', 'DELETE'].includes(method)) {
+      options.body = typeof body === 'string' ? body : JSON.stringify(body);
+    }
+
+    const response = await fetch(url, options);
+
+    if (response.status === 401) {
+      location.reload();
+      //throw new Error('Unauthorized', { cause: { status: 401, response } });
+    }
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`, { 
+        cause: { status: response.status, response } 
+      });
+    }
+
+    const text = await response.text();
+    return text ? JSON.parse(text) : null;
+  };
+
+  return ['GET', 'DELETE'].includes(method)
+    ? (params) => execute(URIBuild(URL, params))
+    : (params, body) => execute(URIBuild(URL, params), body);
+};
+
 const createServices = function(baseurl){
 	return {
 		total:		createService('GET', baseurl + '/total?query=:query'),
@@ -404,7 +526,7 @@ const getFecha = function(data, type, row)  {
 /****************/
 /*DOWNLOAD FILES*/
 /****************/
-const downloadFile = function(blog,filename) {
+const downloadFile = function(blob,filename) {
   
   const nav = window.navigator;
   
