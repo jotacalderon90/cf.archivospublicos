@@ -1,10 +1,10 @@
 FROM node:18-alpine
 
-CMD mkdir /srv/cf.archivospublicos
+RUN mkdir -p /srv/cf.archivospublicos
 
 COPY ["package.json","/srv/cf.archivospublicos/"]
 
-CMD mkdir -p /srv/cf.archivospublicos/frontend/assets/lib
+RUN mkdir -p /srv/cf.archivospublicos/frontend/assets/lib
 
 COPY ["frontend/assets/lib/package.json","/srv/cf.archivospublicos/frontend/assets/lib/"]
 
