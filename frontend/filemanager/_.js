@@ -43,6 +43,7 @@ filemanager.prototype.select = async function(li) {
             this.type = this.name.split(".").pop();
             this.isTextFile = this.textFiles.includes(this.type);
             this.isMediaFile = this.mediaFiles.includes(this.type);
+            this.cleanURL = label.getAttribute("data-api-path");
 
             const apiFilePath = label.getAttribute("data-api-file");
             this.fullnameDOWNLOAD = apiFilePath + btoa(this.fullname) + "/download";
@@ -91,6 +92,11 @@ filemanager.prototype.select = async function(li) {
         console.error(error);
     }
 };
+
+filemanager.prototype.copyCleanURL = async function() {
+  await copyLarge(host + '/assets' + this.cleanURL);
+  alert('Url limpia copiada');
+}
 
 filemanager.prototype.createFolder = function(ulParent, id, directory) {
     const li = document.createElement("li");

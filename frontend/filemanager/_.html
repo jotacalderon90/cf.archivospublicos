@@ -6,6 +6,9 @@
 
 <!--define:script-->
 
+  <script>
+    const host = "{{data:process.env.HOST}}";
+  </script>
 	<script src="filemanager/_.js"></script>
 	
 <!--/define:script-->
@@ -27,6 +30,14 @@
 					<a class="btn btn-outline-primary" target="_blank" title="Visualizar" v-show="filemanager.isFile" :href="filemanager.fullnameGET" >
 						<i class="fa fa-eye"></i> Visualizar
 					</a>
+					<button 
+            class="btn btn-outline-primary" 
+            title="Copiar URL Limpia"
+            v-show="filemanager.isFile" 
+            v-on:click="filemanager.copyCleanURL()" 
+            >
+						<i class="fa fa-copy"></i> Copiar URL
+					</button>
 					<button class="btn btn-outline-primary" v-on:click="filemanager.close()" title="Cerrar">
 						<i class="fa fa-close"></i> Cerrar
 					</button>
