@@ -1,21 +1,15 @@
-FROM node:18-alpine
-
-RUN mkdir -p /srv/cf.archivospublicos
-
-COPY ["package.json","/srv/cf.archivospublicos/"]
-
-RUN mkdir -p /srv/cf.archivospublicos/frontend/assets/lib
-
-COPY ["frontend/assets/lib/package.json","/srv/cf.archivospublicos/frontend/assets/lib/"]
+FROM node:20-alpine
 
 WORKDIR /srv/cf.archivospublicos
 
+COPY package.json ./
+COPY frontend/assets/lib/package.json frontend/assets/lib/
+
 RUN npm install --omit=dev
+RUN npm install --omit=dev -C frontend/assets/lib
 
-RUN npm install -C frontend/assets/lib
-
-COPY [".", "/srv/cf.archivospublicos/"]
+COPY . .
 
 EXPOSE $PORT
 
-CMD [ "npm", "run", "start" ]
+CMD ["npm", "run", "start"]
