@@ -10,6 +10,4 @@ RUN npm install --omit=dev -C frontend/assets/lib
 
 COPY . .
 
-EXPOSE $PORT
-
 CMD ["npm", "run", "start"]
