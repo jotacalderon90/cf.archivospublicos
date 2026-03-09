@@ -16,6 +16,14 @@ document.addEventListener('DOMContentLoaded', function() {
       alert('Ingrese un email válido');
       return;
     }
+    
+    // Validación que email coincida con parámetro URL si existe
+    const urlParams = new URLSearchParams(window.location.search);
+    const correoParam = urlParams.get('correo');
+    if (correoParam && form.email.value.toLowerCase() !== correoParam.toLowerCase()) {
+      alert('El email ingresado no coincide con el correo autorizado');
+      return;
+    }
 
     // Validación recaptcha
     let recaptcha = '';
