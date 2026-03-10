@@ -25,8 +25,8 @@ module.exports = {
    *   get:
    *     tags:
    *       - File
-   *     summary: total de archivos
-   *     description: total de archivos
+   *     summary: colección de archivos
+   *     description: colección de archivos
    */
 	//@route('/api/filemanager/file/:id/collection')
 	//@method(['get'])
