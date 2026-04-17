@@ -1,7 +1,7 @@
 /********/
 /*LOADER:TODO:a futuro solo quedara el por #id*/
 /********/
-.loader{
+.loader {
 	position: fixed;
 	width: 100%;
 	height: 100%;
@@ -10,7 +10,8 @@
 	opacity: 0.5;
 	top: 0;
 }
-.loader i{
+
+.loader i {
 	color: white;
 	width: 25px;
 	height: 25px;
@@ -21,7 +22,8 @@
 	bottom: 0;
 	margin: auto;
 }
-#loader{		
+
+#loader {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -33,9 +35,83 @@
 	justify-content: center;
 	z-index: 9999;
 }
+
 /***************/
 /*AUTOCOMPLETAR*/
 /***************/
-.ui-autocomplete{
-	z-index: 9999!important;
+.ui-autocomplete {
+	z-index: 9999 !important;
 }
+
+
+
+/*************/
+/*FLEX RESIZE*/
+/*************/
+
+.resizer {
+	width: 6px;
+	cursor: col-resize;
+	background-color: transparent;
+	position: relative;
+	z-index: 10;
+	transition: background-color 0.2s ease-in-out;
+}
+
+.resizer::after {
+	content: '';
+	position: absolute;
+	left: -3px;
+	right: -3px;
+	top: 0;
+	bottom: 0;
+}
+
+.resizer:hover,
+.resizer.active {
+	background-color: var(--bs-success, #198754);
+}
+
+body.resizing {
+	user-select: none !important;
+	cursor: col-resize !important;
+}
+
+.resizer-collapsed {
+	width: 10px !important;
+	overflow: hidden;
+	padding: 0 !important;
+	position: relative;
+}
+
+.resizer-collapsed::before {
+	content: '›';
+	position: absolute;
+	left: 3px;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 14px;
+	color: var(--bs-success, #198754);
+	font-weight: bold;
+}
+
+.resizer-collapsed>* {
+	display: none !important;
+}
+
+/* Zona clickeable para expandir cuando está colapsado */
+.resizer-collapsed::after {
+	content: '';
+	display: block;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+
+/*************/
+/*FLEX RESIZE*/
+/*************/

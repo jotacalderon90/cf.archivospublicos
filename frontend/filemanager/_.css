@@ -1,27 +1,34 @@
 #ul_directory * {
-     list-style:none;
+     list-style: none;
 }
-#ul_directory li{
-     line-height:180%;
+
+#ul_directory li {
+     line-height: 180%;
 }
-#ul_directory input{
+
+#ul_directory input {
      position: absolute;
      left: -1000em;
 }
-#ul_directory .folder:before{
-     content:"\025b8";
-     margin-right:4px;
+
+#ul_directory .folder:before {
+     content: "\025b8";
+     margin-right: 4px;
 }
-#ul_directory input:checked ~ .folder:before{
-     content:"\025be";
+
+#ul_directory input:checked~.folder:before {
+     content: "\025be";
 }
-#ul_directory .inside{
+
+#ul_directory .inside {
      display: none;
      margin-left: -30px;
 }
-#ul_directory input:checked ~ ul{
-     display:block;
+
+#ul_directory input:checked~ul {
+     display: block;
 }
-#ul_directory .selected{
+
+#ul_directory .selected {
      color: grey;
 }
