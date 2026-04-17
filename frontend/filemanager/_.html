@@ -1,74 +1,79 @@
 <!--use:main-->
 
 <!--define:head-->
-	<link rel="stylesheet" href="filemanager/_.css" />
+<link rel="stylesheet" href="filemanager/_.css" />
 <!--/define:head-->
 
 <!--define:script-->
 
-  <script>
-    const host = "{{data:process.env.HOST}}";
-  </script>
-	<script src="filemanager/_.js"></script>
-	
+<script>
+	const host = "{{data:process.env.HOST}}";
+</script>
+<script src="filemanager/_.js"></script>
+
 <!--/define:script-->
 
 <!--define:main-->
 
-	<!--include:filemanager/section/header-->
-	
-	<div class="container-fluid">
-		<div class="row">
-			<aside class="border border-right col-md-3 col-lg-2 bg-body-tertiary min-vh-100 offcanvas-md offcanvas-end" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
-				<ul id="ul_directory" class="mt-4"></ul>
-			</aside>
-			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" v-show="filemanager.archive!=null">
-      
-				<!-- Barra de acciones -->
-				<div class="btn-group btn-group-sm mt-4 flex-wrap gap-1">
-        
-        
-        
-        
-        
-        
-        
-        
-        
-					<a class="btn btn-outline-primary" target="_blank" title="Descargar" v-show="filemanager.isFile" :href="filemanager.fullnameDOWNLOAD" >
-						<i class="fa fa-download"></i> Descargar
-					</a>
-          
-					<a class="btn btn-outline-primary" target="_blank" title="Visualizar" v-show="filemanager.isFile" :href="filemanager.fullnameGET" >
-						<i class="fa fa-eye"></i> Visualizar
-					</a>
+<!--include:filemanager/section/header-->
 
-					<button class="btn btn-outline-primary" title="Copiar URL" v-show="filemanager.isFile" v-on:click="filemanager.copyCleanURL()">
-						<i class="fa fa-copy"></i> Copiar URL
-					</button>
-          
-					<button class="btn btn-outline-secondary" v-on:click="filemanager.close()" title="Cerrar">
-						<i class="fa fa-times"></i> Cerrar
-					</button>
-          
-				</div>
-        
-				<!-- Info del archivo/carpeta seleccionado -->
-				<div class="mt-2 mb-2" v-show="filemanager.archive!=null">
-					<small class="text-muted">
-						<i class="fa" :class="filemanager.isFolder ? 'fa-folder text-warning' : 'fa-file text-secondary'"></i>
-						{{ filemanager.fullname }}
-					</small>
-				</div>
+	<div class="d-flex">
+		<aside class="border border-end bg-body-tertiary min-vh-100 flex-shrink-0 offcanvas-md offcanvas-end"
+			tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel" style="width: 300px;">
+			<ul id="ul_directory" class="mt-4"></ul>
+		</aside>
+		<div class="resizer"></div>
+		<main class="flex-grow-1 px-md-4 mb-4" style="min-width: 0;" v-show="filemanager.archive!=null">
 
-				<!-- Contenido -->
-				<div v-show="filemanager.isFile" class="mt-3">
-					<textarea rows="20" class="form-control font-monospace" v-show="filemanager.isTextFile" v-model="filemanager.fileContent"></textarea>
-					<div class="dv-visualcontent" v-show="filemanager.isMediaFile"></div>
-				</div>
-        
-			</main>
-		</div>
+			<!-- Barra de acciones -->
+			<div class="btn-group btn-group-sm mt-4 flex-wrap gap-1">
+
+
+
+
+
+
+
+
+
+				<a class="btn btn-outline-primary" target="_blank" title="Descargar" v-show="filemanager.isFile"
+					:href="filemanager.fullnameDOWNLOAD">
+					<i class="fa fa-download"></i> Descargar
+				</a>
+
+				<a class="btn btn-outline-primary" target="_blank" title="Visualizar" v-show="filemanager.isFile"
+					:href="filemanager.fullnameGET">
+					<i class="fa fa-eye"></i> Visualizar
+				</a>
+
+				<button class="btn btn-outline-primary" title="Copiar URL" v-show="filemanager.isFile"
+					v-on:click="filemanager.copyCleanURL()">
+					<i class="fa fa-copy"></i> Copiar URL
+				</button>
+
+				<button class="btn btn-outline-secondary" v-on:click="filemanager.close()" title="Cerrar">
+					<i class="fa fa-times"></i> Cerrar
+				</button>
+
+			</div>
+
+			<!-- Info del archivo/carpeta seleccionado -->
+			<div class="mt-2 mb-2" v-show="filemanager.archive!=null">
+				<small class="text-muted">
+					<i class="fa"
+						:class="filemanager.isFolder ? 'fa-folder text-warning' : 'fa-file text-secondary'"></i>
+					{{ filemanager.fullname }}
+				</small>
+			</div>
+
+			<!-- Contenido -->
+			<div v-show="filemanager.isFile" class="mt-3">
+				<textarea rows="20" class="form-control font-monospace" v-show="filemanager.isTextFile"
+					v-model="filemanager.fileContent"></textarea>
+				<div class="dv-visualcontent" v-show="filemanager.isMediaFile"></div>
+			</div>
+
+		</main>
 	</div>
 
 <!--/define:main-->
