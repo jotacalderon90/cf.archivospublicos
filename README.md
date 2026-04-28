@@ -2,7 +2,7 @@
 
 `cf.archivospublicos` es un servicio base construido sobre **cf.framework**, cuyo objetivo es centralizar y publicar recursos estáticos reutilizables dentro del ecosistema de aplicaciones web.
 
-Este repositorio actúa como una **capa común de assets** (CSS, JavaScript, imágenes, librerías, etc.), permitiendo que múltiples aplicaciones consuman recursos compartidos de forma consistente, desacoplada y mantenible.
+Este repositorio actúa como una capa común de assets y archivos públicos, incluyendo CSS, JavaScript, imágenes, librerías y documentos (PDF, MP3, MP4, DOCX, Excel, entre otros), permitiendo que múltiples aplicaciones consuman recursos de forma consistente, desacoplada y mantenible.
 
 ---
 
@@ -10,9 +10,8 @@ Este repositorio actúa como una **capa común de assets** (CSS, JavaScript, im�
 
 En lugar de duplicar archivos estáticos en cada proyecto, este servicio:
 
-* Centraliza recursos frontend comunes
+* Centraliza recursos públicos
 * Reduce duplicación de código
-* Permite versionamiento controlado de assets
 * Facilita mantenimiento y escalabilidad del ecosistema
 * Sirve como base para otras aplicaciones construidas sobre `cf.framework`
 
@@ -35,7 +34,7 @@ Por esta razón, `cf.archivospublicos`:
 
 * Aloja localmente todas las librerías necesarias
 * Garantiza disponibilidad incluso sin conexión a internet
-* Permite control total sobre versiones y dependencias
+* Permite control total sobre archivos y dependencias
 * Asegura consistencia en entornos aislados o restringidos
 
 > La experiencia ha demostrado que los sistemas internos deben ser **autosuficientes** y no depender de servicios externos para su funcionamiento base.
