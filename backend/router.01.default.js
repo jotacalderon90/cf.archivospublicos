@@ -12,6 +12,14 @@ module.exports = {
    *       - Default
    *     summary: obtener favicon
    *     description: obtiene favicon
+   *     responses:
+   *       200:
+   *         description: Icono del sitio
+   *         content:
+   *           image/x-icon:
+   *             schema:
+   *               type: string
+   *               format: binary
    */
 	//@route('/favicon.ico')
 	//@method(['get'])
@@ -27,6 +35,13 @@ module.exports = {
    *       - Default
    *     summary: obtener robots
    *     description: obtiene robots.txt
+   *     responses:
+   *       200:
+   *         description: Respuesta en texto plano
+   *         content:
+   *           text/plain:
+   *             schema:
+   *               type: string
    */
 	//@route('/robots.txt')
 	//@method(['get'])
