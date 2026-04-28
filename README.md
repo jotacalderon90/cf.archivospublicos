@@ -4,6 +4,8 @@
 
 Este repositorio actúa como una **capa común de assets** (CSS, JavaScript, imágenes, librerías, etc.), permitiendo que múltiples aplicaciones consuman recursos compartidos de forma consistente, desacoplada y mantenible.
 
+---
+
 ## 🎯 Propósito
 
 En lugar de duplicar archivos estáticos en cada proyecto, este servicio:
@@ -13,6 +15,32 @@ En lugar de duplicar archivos estáticos en cada proyecto, este servicio:
 * Permite versionamiento controlado de assets
 * Facilita mantenimiento y escalabilidad del ecosistema
 * Sirve como base para otras aplicaciones construidas sobre `cf.framework`
+
+---
+
+## 🌐 Independencia de CDN externos
+
+Una de las decisiones fundamentales de este proyecto es **no depender de CDN públicos** para la carga de recursos estáticos.
+
+Esto responde a escenarios reales donde:
+
+* Clientes operan en **redes locales (intranet)** sin acceso a internet
+* Existen **intermitencias o caídas de conectividad**
+* Se requiere **alta disponibilidad en entornos críticos**
+* Hay **restricciones de seguridad** que impiden consumir recursos externos
+
+En estos contextos, depender de CDN introduce un punto de falla externo que impacta directamente la experiencia del usuario.
+
+Por esta razón, `cf.archivospublicos`:
+
+* Aloja localmente todas las librerías necesarias
+* Garantiza disponibilidad incluso sin conexión a internet
+* Permite control total sobre versiones y dependencias
+* Asegura consistencia en entornos aislados o restringidos
+
+> La experiencia ha demostrado que los sistemas internos deben ser **autosuficientes** y no depender de servicios externos para su funcionamiento base.
+
+---
 
 ## 🧩 Tecnologías
 
@@ -75,38 +103,6 @@ Modo producción:
 docker-compose build
 docker-compose up
 ```
-
----
-
-## 🧠 Filosofía
-
-Este proyecto forma parte de un enfoque mayor: construir software basado en **capacidades reutilizables**, donde cada componente cumple un rol claro dentro del sistema.
-
-`cf.archivospublicos` no es una aplicación final, sino una **pieza estructural del ecosistema**.
-
----
-
-## 🌐 Independencia de CDN externos
-
-Una de las decisiones fundamentales de este proyecto es **no depender de CDN públicos** para la carga de recursos estáticos.
-
-Esto responde a escenarios reales donde:
-
-* Clientes operan en **redes locales (intranet)** sin acceso a internet
-* Existen **intermitencias o caídas de conectividad**
-* Se requiere **alta disponibilidad en entornos críticos**
-* Hay **restricciones de seguridad** que impiden consumir recursos externos
-
-En estos contextos, depender de CDN introduce un punto de falla externo que impacta directamente la experiencia del usuario.
-
-Por esta razón, `cf.archivospublicos`:
-
-* Aloja localmente todas las librerías necesarias
-* Garantiza disponibilidad incluso sin conexión a internet
-* Permite control total sobre versiones y dependencias
-* Asegura consistencia en entornos aislados o restringidos
-
-> La experiencia ha demostrado que los sistemas internos deben ser **autosuficientes** y no depender de servicios externos para su funcionamiento base.
 
 ---
 
