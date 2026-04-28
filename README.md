@@ -84,6 +84,8 @@ Este proyecto forma parte de un enfoque mayor: construir software basado en **ca
 
 `cf.archivospublicos` no es una aplicación final, sino una **pieza estructural del ecosistema**.
 
+---
+
 ## 🌐 Independencia de CDN externos
 
 Una de las decisiones fundamentales de este proyecto es **no depender de CDN públicos** para la carga de recursos estáticos.
