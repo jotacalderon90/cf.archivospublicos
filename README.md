@@ -84,6 +84,28 @@ Este proyecto forma parte de un enfoque mayor: construir software basado en **ca
 
 `cf.archivospublicos` no es una aplicación final, sino una **pieza estructural del ecosistema**.
 
+## 🌐 Independencia de CDN externos
+
+Una de las decisiones fundamentales de este proyecto es **no depender de CDN públicos** para la carga de recursos estáticos.
+
+Esto responde a escenarios reales donde:
+
+* Clientes operan en **redes locales (intranet)** sin acceso a internet
+* Existen **intermitencias o caídas de conectividad**
+* Se requiere **alta disponibilidad en entornos críticos**
+* Hay **restricciones de seguridad** que impiden consumir recursos externos
+
+En estos contextos, depender de CDN introduce un punto de falla externo que impacta directamente la experiencia del usuario.
+
+Por esta razón, `cf.archivospublicos`:
+
+* Aloja localmente todas las librerías necesarias
+* Garantiza disponibilidad incluso sin conexión a internet
+* Permite control total sobre versiones y dependencias
+* Asegura consistencia en entornos aislados o restringidos
+
+> La experiencia ha demostrado que los sistemas internos deben ser **autosuficientes** y no depender de servicios externos para su funcionamiento base.
+
 ---
 
 ## 📌 Notas
