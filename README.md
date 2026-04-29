@@ -1,12 +1,12 @@
 # Archivos Públicos
 
-`cf.archivospublicos` es el primer código fuente del [**proyecto trascender**](https://github.com/jotacalderon90/).
+`cf.archivospublicos` es el primer código fuente del [**proyecto trascender**](https://github.com/jotacalderon90/), y establece la base para la gestión y distribución de recursos públicos dentro del ecosistema.
 
 El objetivo es centralizar y publicar recursos estáticos reutilizables dentro del ecosistema de aplicaciones web.
 
-Este repositorio actúa como una capa común de assets y archivos públicos, incluyendo CSS, JavaScript, imágenes, librerías y documentos (PDF, MP3, MP4, DOCX, Excel, entre otros), permitiendo que múltiples aplicaciones consuman recursos de forma consistente, desacoplada y mantenible.
+Este repositorio actúa como una capa común de recursos públicos, incluyendo CSS, JavaScript, imágenes, librerías y documentos (PDF, MP3, MP4, DOCX, Excel, entre otros), permitiendo que múltiples aplicaciones consuman recursos de forma consistente, desacoplada y mantenible.
 
-Este repositorio está diseñado para la exposición de recursos públicos. Por definición, los archivos aquí almacenados deben ser considerados accesibles y no contener información sensible.
+Está diseñado para la exposición de recursos públicos. Por definición, los archivos aquí almacenados deben ser considerados accesibles y no contener información sensible.
 
 ---
 
@@ -158,4 +158,10 @@ docker-compose up
 * Este repositorio está pensado para integrarse con otros servicios del ecosistema.
 * No contiene lógica de negocio, solo exposición de recursos.
 * Puede ser consumido por múltiples aplicaciones simultáneamente.
-* Todo archivo contenido dentro de frontend/assets quedará expuesto en la red
+* Todo archivo contenido dentro de frontend/assets será expuesto directamente en la red, por lo que debe considerarse público.
+
+## Continuidad del ecosistema
+
+El siguiente componente del ecosistema es el sistema de cuentas:
+
+[Partir con Sistema de cuentas](https://github.com/jotacalderon90/cf.account)
