@@ -67,6 +67,50 @@ Por esta razón, `cf.archivospublicos`:
 
 ## Ejecución local
 
+### Configuración de red local
+
+Cada código fuente dentro del ecosistema se ejecuta como un sistema independiente, por lo que puede requerir:
+
+* Dominio propio
+* Dirección IP propia
+* Aislamiento dentro de una subred local
+
+Para entornos de desarrollo, es posible simular esta arquitectura creando una subred en la interfaz de loopback.
+
+#### Ejemplo de subred
+
+```
+172.27.16.1/24
+```
+
+> Puedes utilizar otro rango privado según tu necesidad.
+
+---
+
+#### Windows
+
+```bash
+netsh interface ipv4 add address "Loopback Pseudo-Interface 1" 172.27.16.1 255.255.255.0 store=persistent
+```
+
+---
+
+#### Linux
+
+```bash
+sudo ip addr add 172.27.16.1/24 dev lo
+```
+
+---
+
+#### Consideraciones
+
+* Esta configuración permite simular múltiples servicios corriendo en una misma máquina
+* Facilita pruebas de integración entre sistemas desacoplados
+* Evita conflictos al trabajar con dominios y puertos locales
+
+---
+
 ### Con Node.js
 
 En Windows puedes usar el script:
