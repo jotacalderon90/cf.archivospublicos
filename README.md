@@ -114,3 +114,4 @@ docker-compose up
 * Este repositorio está pensado para integrarse con otros servicios del ecosistema.
 * No contiene lógica de negocio, solo exposición de recursos.
 * Puede ser consumido por múltiples aplicaciones simultáneamente.
+* Todo archivo contenido dentro de frontend/assets quedará expuesto en la red
