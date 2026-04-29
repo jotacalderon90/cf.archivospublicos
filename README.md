@@ -10,7 +10,7 @@ Este repositorio está diseñado para la exposición de recursos públicos. Por 
 
 ---
 
-## 🎯 Propósito
+## Propósito
 
 En lugar de duplicar archivos estáticos en cada proyecto, este servicio:
 
@@ -21,7 +21,7 @@ En lugar de duplicar archivos estáticos en cada proyecto, este servicio:
 
 ---
 
-## 🌐 Independencia de CDN externos
+## Independencia de CDN externos
 
 Una de las decisiones fundamentales de este proyecto es **no depender de CDN públicos** para la carga de recursos estáticos.
 
@@ -45,7 +45,7 @@ Por esta razón, `cf.archivospublicos`:
 
 ---
 
-## 🧩 Tecnologías
+## Tecnologías
 
 ### Backend
 
