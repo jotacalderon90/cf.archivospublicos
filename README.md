@@ -83,7 +83,7 @@ Para entornos de desarrollo, es posible simular esta arquitectura creando una su
 172.27.16.1/24
 ```
 
-> Puedes utilizar otro rango privado según tu necesidad.
+> Puedes utilizar otro rango privado según tu necesidad pero debes indicarla en el archivo .env correspondiente.
 
 ---
 
