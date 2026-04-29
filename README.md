@@ -1,8 +1,12 @@
 # Archivos Públicos
 
-`cf.archivospublicos` es un servicio base construido sobre **cf.framework**, cuyo objetivo es centralizar y publicar recursos estáticos reutilizables dentro del ecosistema de aplicaciones web.
+`cf.archivospublicos` es el primer código fuente del [**proyecto trascender**](https://github.com/jotacalderon90/).
+
+El objetivo es centralizar y publicar recursos estáticos reutilizables dentro del ecosistema de aplicaciones web.
 
 Este repositorio actúa como una capa común de assets y archivos públicos, incluyendo CSS, JavaScript, imágenes, librerías y documentos (PDF, MP3, MP4, DOCX, Excel, entre otros), permitiendo que múltiples aplicaciones consuman recursos de forma consistente, desacoplada y mantenible.
+
+Este repositorio está diseñado para la exposición de recursos públicos. Por definición, los archivos aquí almacenados deben ser considerados accesibles y no contener información sensible.
 
 ---
 
@@ -61,7 +65,7 @@ Por esta razón, `cf.archivospublicos`:
 * Socket.IO
 * Luxon
 
-## 🚀 Ejecución local
+## Ejecución local
 
 ### Con Node.js
 
@@ -87,7 +91,7 @@ npm run start
 
 ---
 
-### 🐳 Con Docker
+### Con Docker
 
 Modo desarrollo:
 
@@ -105,7 +109,7 @@ docker-compose up
 
 ---
 
-## 📌 Notas
+## Notas
 
 * Este repositorio está pensado para integrarse con otros servicios del ecosistema.
 * No contiene lógica de negocio, solo exposición de recursos.
