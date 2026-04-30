@@ -5,8 +5,8 @@ WORKDIR /srv/cf.archivospublicos
 COPY package.json ./
 COPY frontend/assets/lib/package.json frontend/assets/lib/
 
-RUN npm install
-RUN npm install -C frontend/assets/lib
+RUN npm ci
+RUN npm ci -C frontend/assets/lib
 
 COPY . .
 

@@ -1,5 +1,9 @@
+# Dependencias
 node_modules/*
-package-lock.json
-frontend/assets/lib/package-lock.json
 frontend/assets/lib/node_modules/*
+
+# Variables de entorno
 .env.production
+
+# Cobertura de tests
+coverage/
