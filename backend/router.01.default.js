@@ -3,7 +3,6 @@
 const controlador = require('./lib/01.default/controller');
 
 module.exports = {
-	
   /**
    * @swagger
    * /favicon.ico:
@@ -21,12 +20,12 @@ module.exports = {
    *               type: string
    *               format: binary
    */
-	//@route('/favicon.ico')
-	//@method(['get'])
-	favicon: function(req,res){
-		controlador.favicon(req,res);
-	},
-	
+  //@route('/favicon.ico')
+  //@method(['get'])
+  favicon: function (req, res) {
+    controlador.favicon(req, res);
+  },
+
   /**
    * @swagger
    * /robots.txt:
@@ -43,10 +42,9 @@ module.exports = {
    *             schema:
    *               type: string
    */
-	//@route('/robots.txt')
-	//@method(['get'])
-	robots: function(req,res){
-		controlador.robots(req,res);
-	}
-	
+  //@route('/robots.txt')
+  //@method(['get'])
+  robots: function (req, res) {
+    controlador.robots(req, res);
+  },
 };

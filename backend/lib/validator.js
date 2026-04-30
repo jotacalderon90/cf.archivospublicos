@@ -16,5 +16,5 @@ module.exports = {
         }
       },
       { message: 'id debe ser un string en base64 válido' }
-    )
-}
+    ),
+};

@@ -3,7 +3,6 @@
 const controlador = require('./lib/03.folder/controller');
 
 module.exports = {
-	
   /**
    * @swagger
    * /api/filemanager/folder/:id/total:
@@ -13,12 +12,12 @@ module.exports = {
    *     summary: total de carpetas
    *     description: total de carpetas
    */
-	//@route('/api/filemanager/folder/:id/total')
-	//@method(['get'])
-	total: async function(req,res){
-		controlador.total(req, res);
-	},
-	
+  //@route('/api/filemanager/folder/:id/total')
+  //@method(['get'])
+  total: async function (req, res) {
+    controlador.total(req, res);
+  },
+
   /**
    * @swagger
    * /api/filemanager/folder/:id/collection:
@@ -28,10 +27,9 @@ module.exports = {
    *     summary: colecction de carpetas
    *     description: colecction de carpetas
    */
-	//@route('/api/filemanager/folder/:id/collection')
-	//@method(['get'])
-	collection: async function(req,res){
+  //@route('/api/filemanager/folder/:id/collection')
+  //@method(['get'])
+  collection: async function (req, res) {
     controlador.collection(req, res);
-	}
-	
-}
+  },
+};

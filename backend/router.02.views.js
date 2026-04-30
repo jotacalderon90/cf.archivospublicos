@@ -3,7 +3,6 @@
 const controlador = require('./lib/02.views/controller');
 
 module.exports = {
-	
   /**
    * @swagger
    * /:
@@ -13,10 +12,9 @@ module.exports = {
    *     summary: vista de inicio
    *     description: vista de inicio
    */
-	//@route('/')
-	//@method(['get'])
-	index: function(req,res){
-		controlador.index(req,res);
-	}
-	
-}
+  //@route('/')
+  //@method(['get'])
+  index: function (req, res) {
+    controlador.index(req, res);
+  },
+};

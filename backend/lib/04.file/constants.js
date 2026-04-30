@@ -1,6 +1,6 @@
 'use strict';
 
-const constants  = require('../constants');
+const constants = require('../constants');
 
 constants.error.rest.total = 'Error al obtener total de archivos';
 constants.error.rest.collection = 'Error al obtener colleccion de archivos';
