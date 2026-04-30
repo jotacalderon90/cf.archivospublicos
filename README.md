@@ -45,6 +45,16 @@ Por esta razón, `cf.archivospublicos`:
 
 ---
 
+```mermaid
+graph TD
+A[Usuario] --> B[Listar carpetas]
+B --> C[Listar archivos]
+C --> D[Descargar archivo]
+C --> E[Ver archivo]
+C --> F[Copiar Url]
+```
+---
+
 ## Tecnologías
 
 ### Backend
