@@ -56,6 +56,8 @@ C --> E[Ver archivo]
 C --> F[Copiar Url]
 ```
 
+---
+
 ```mermaid
 graph TD
 A[Sistema externo] --> B[Cargar recurso]
