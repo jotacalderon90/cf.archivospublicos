@@ -14,7 +14,5 @@ module.exports = {
    */
   //@route('/')
   //@method(['get'])
-  index: function (req, res) {
-    controlador.index(req, res);
-  },
+  index: controlador.index,
 };

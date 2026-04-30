@@ -14,9 +14,7 @@ module.exports = {
    */
   //@route('/api/filemanager/folder/:id/total')
   //@method(['get'])
-  total: async function (req, res) {
-    controlador.total(req, res);
-  },
+  total: controlador.total,
 
   /**
    * @swagger
@@ -29,7 +27,5 @@ module.exports = {
    */
   //@route('/api/filemanager/folder/:id/collection')
   //@method(['get'])
-  collection: async function (req, res) {
-    controlador.collection(req, res);
-  },
+  collection: controlador.collection,
 };

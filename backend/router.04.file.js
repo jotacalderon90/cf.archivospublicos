@@ -14,9 +14,7 @@ module.exports = {
    */
   //@route('/api/filemanager/file/:id/total')
   //@method(['get'])
-  total: async function (req, res) {
-    controlador.total(req, res);
-  },
+  total: controlador.total,
 
   /**
    * @swagger
@@ -29,9 +27,7 @@ module.exports = {
    */
   //@route('/api/filemanager/file/:id/collection')
   //@method(['get'])
-  collection: async function (req, res) {
-    controlador.collection(req, res);
-  },
+  collection: controlador.collection,
 
   /**
    * @swagger
@@ -44,9 +40,7 @@ module.exports = {
    */
   //@route('/api/filemanager/file/:id')
   //@method(['get'])
-  read: async function (req, res) {
-    controlador.read(req, res);
-  },
+  read: controlador.read,
 
   /**
    * @swagger
@@ -59,9 +53,7 @@ module.exports = {
    */
   //@route('/api/filemanager/file/:id/download')
   //@method(['get'])
-  download: async function (req, res) {
-    controlador.download(req, res);
-  },
+  download: controlador.download,
 
   /**
    * @swagger
@@ -74,7 +66,5 @@ module.exports = {
    */
   //@route('/api/filemanager/file/:id/getfile')
   //@method(['get'])
-  get: async function (req, res) {
-    controlador.get(req, res);
-  },
+  get: controlador.get,
 };
