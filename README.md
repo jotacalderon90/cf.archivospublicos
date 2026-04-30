@@ -45,13 +45,20 @@ Por esta razón, `cf.archivospublicos`:
 
 ---
 
+## Diagrama de uso
+
 ```mermaid
 graph TD
-A[Usuario] --> B[Listar carpetas]
+A[Usuario Anonimo] --> B[Listar carpetas]
 B --> C[Listar archivos]
 C --> D[Descargar archivo]
 C --> E[Ver archivo]
 C --> F[Copiar Url]
+```
+
+```mermaid
+graph TD
+A[Sistema externo] --> B[Cargar recurso]
 ```
 ---
 
