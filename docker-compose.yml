@@ -7,8 +7,10 @@ services:
       dockerfile: Dockerfile
     image: archivospublicos:0.0.1
     container_name: archivospublicos
+    env_file:
+      - .env.production
     environment:
-       NODE_ENV: "production"
-       PORT: ${PORT:-2201}
+      NODE_ENV: "production"
+      PORT: ${PORT:-2201}
     ports:
       - "127.0.0.1:2201:2201"
