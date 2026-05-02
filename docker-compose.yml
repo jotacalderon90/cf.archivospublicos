@@ -7,10 +7,6 @@ services:
       dockerfile: Dockerfile
     image: archivospublicos:0.0.1
     container_name: archivospublicos
-    volumes:
-      - .:/srv/cf.archivospublicos/
-      - /srv/cf.archivospublicos/node_modules
-      - /srv/cf.archivospublicos/frontend/assets/lib/node_modules
     environment:
        NODE_ENV: "production"
        PORT: ${PORT:-2201}
