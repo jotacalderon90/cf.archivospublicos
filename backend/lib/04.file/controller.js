@@ -17,7 +17,7 @@ module.exports = {
         return;
       }
 
-      const respuesta = await service.total(parseResult.data);
+      const respuesta = await service.total({ ...parseResult.data, host: req.headers.host });
 
       res.send({ data: respuesta });
     } catch (error) {
@@ -39,7 +39,7 @@ module.exports = {
         return;
       }
 
-      const respuesta = await service.collection(parseResult.data);
+      const respuesta = await service.collection({ ...parseResult.data, host: req.headers.host });
 
       res.send({ data: respuesta });
     } catch (error) {
@@ -61,7 +61,7 @@ module.exports = {
         return;
       }
 
-      const respuesta = await service.read(parseResult.data);
+      const respuesta = await service.read({ ...parseResult.data, host: req.headers.host });
 
       res.send({ data: respuesta });
     } catch (error) {
@@ -79,7 +79,7 @@ module.exports = {
         return;
       }
 
-      const respuesta = await service.download(parseResult.data);
+      const respuesta = await service.download({ ...parseResult.data, host: req.headers.host });
 
       res.download(respuesta);
     } catch (error) {
@@ -101,7 +101,7 @@ module.exports = {
         return;
       }
 
-      const respuesta = await service.get(parseResult.data);
+      const respuesta = await service.get({ ...parseResult.data, host: req.headers.host });
 
       res.sendFile(respuesta);
     } catch (error) {

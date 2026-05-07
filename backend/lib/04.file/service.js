@@ -9,7 +9,7 @@ const filemanager = require('../filemanager');
 module.exports = {
   total: async function (input) {
     try {
-      const dir = filemanager.get(input.id);
+      const dir = filemanager.get(input.id, input.host);
 
       return fs.readdirSync(dir, 'utf8').filter(function (row) {
         return fs.statSync(path.join(dir, row)).isFile();
@@ -26,7 +26,7 @@ module.exports = {
 
   collection: async function (input) {
     try {
-      const dir = filemanager.get(input.id);
+      const dir = filemanager.get(input.id, input.host);
 
       return fs.readdirSync(dir, 'utf8').filter(function (row) {
         return fs.statSync(path.join(dir, row)).isFile();
@@ -43,7 +43,7 @@ module.exports = {
 
   read: async function (input) {
     try {
-      return fs.readFileSync(filemanager.get(input.id), 'utf8');
+      return fs.readFileSync(filemanager.get(input.id, input.host), 'utf8');
     } catch (error) {
       logger.error(error);
       throw new Error(
@@ -56,7 +56,7 @@ module.exports = {
 
   download: async function (input) {
     try {
-      return filemanager.get(input.id);
+      return filemanager.get(input.id, input.host);
     } catch (error) {
       logger.error(error);
       throw new Error(
@@ -69,7 +69,7 @@ module.exports = {
 
   get: async function (input) {
     try {
-      return filemanager.get(input.id);
+      return filemanager.get(input.id, input.host);
     } catch (error) {
       logger.error(error);
       throw new Error(

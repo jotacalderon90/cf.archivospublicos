@@ -9,7 +9,7 @@ const filemanager = require('../filemanager');
 module.exports = {
   total: async function (input) {
     try {
-      const dir = filemanager.get(input.id);
+      const dir = filemanager.get(input.id, input.host);
 
       return fs.readdirSync(dir, 'utf8').filter(function (row) {
         return !fs.statSync(path.join(dir, row)).isFile();
@@ -26,7 +26,7 @@ module.exports = {
 
   collection: async function (input) {
     try {
-      const dir = filemanager.get(input.id);
+      const dir = filemanager.get(input.id, input.host);
 
       return fs.readdirSync(dir, 'utf8').filter(function (row) {
         return !fs.statSync(path.join(dir, row)).isFile();

@@ -17,7 +17,7 @@ module.exports = {
         return;
       }
 
-      const respuesta = await service.total(parseResult.data);
+      const respuesta = await service.total({ ...parseResult.data, host: req.headers.host });
 
       res.send({ data: respuesta });
     } catch (error) {
@@ -39,7 +39,7 @@ module.exports = {
         return;
       }
 
-      const respuesta = await service.collection(parseResult.data);
+      const respuesta = await service.collection({ ...parseResult.data, host: req.headers.host });
 
       res.send({ data: respuesta });
     } catch (error) {
