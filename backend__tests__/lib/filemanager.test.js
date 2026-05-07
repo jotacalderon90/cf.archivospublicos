@@ -4,7 +4,7 @@ const service = require('../../backend/lib/filemanager');
 
 describe('backend/lib/filemanager', () => {
   const testDomain = 'archivospublicos.jotace.cl';
-  const baseDirectory = process.cwd() + '/frontend/' + testDomain;
+  const baseDirectory = process.cwd() + '/frontend/' + testDomain + '/';
 
   describe('get', () => {
     it('debería retornar la ruta correcta para un id en base64 válido', () => {
