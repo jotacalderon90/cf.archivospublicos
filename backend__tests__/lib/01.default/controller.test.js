@@ -22,7 +22,11 @@ describe('backend/lib/01.default/controller', () => {
   let req, res;
 
   beforeEach(() => {
-    req = {};
+    req = {
+      headers: {
+        host: 'archivospublicos.jotace.cl',
+      },
+    };
     res = {
       sendFile: jest.fn(),
       send: jest.fn(),
