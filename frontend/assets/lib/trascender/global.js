@@ -842,3 +842,148 @@ const wait = function (TIME) {
 	};
 
 })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * Cookie Policies Library v1.0
+ * Librería ligera para gestión de consentimiento con enfoque en transparencia técnica.
+ */
+
+const cookie_policies = (customMessage = null, position = 'inBottom') => {
+    const COOKIE_NAME = 'cookie_consent_status';
+    
+    // Si ya existe la cookie, no ejecutamos nada
+    if (document.cookie.split(';').some((item) => item.trim().startsWith(`${COOKIE_NAME}=`))) {
+        return;
+    }
+
+    // Texto por defecto con ingeniería social aplicada
+    const defaultMessage = `
+        <p><strong>Tu privacidad y transparencia son importantes para nosotros.</strong> Internet funciona mediante un intercambio constante de información entre tu dispositivo y los servidores de cada sitio que visitas. Esto incluye datos técnicos básicos como tu dirección IP, navegador y solicitud de contenido, necesarios para que cualquier página web pueda cargarse correctamente.</p>
+        
+        <details style="margin-top: 10px; cursor: pointer; font-size: 0.9em; color: #555;">
+            <summary>Leer detalle técnico sobre transparencia</summary>
+            <p style="margin-top: 8px;">Además, este sitio utiliza cookies para funciones como mantener sesiones, recordar preferencias, medir rendimiento y mejorar la experiencia de navegación. Algunas son esenciales para que el sitio funcione; otras son opcionales y puedes aceptarlas o rechazarlas.
+            <br><br>
+            Tu privacidad y transparencia son importantes para nosotros. Por eso te explicamos claramente qué información se utiliza, por qué se utiliza y qué decisiones puedes tomar sobre ella.</p>
+        </details>
+    `;
+
+    const message = customMessage || defaultMessage;
+
+    // 1. Estilos inyectados dinámicamente
+    const styles = `
+        .cp-banner { position: fixed; z-index: 9998; cursor: pointer; transition: transform 0.3s ease; }
+        .cp-cookie-icon { 
+            width: 60px; height: 60px; background: #fff; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15); border: 2px solid #f1f1f1; font-size: 30px;
+        }
+        .cp-overlay { 
+            position: fixed; top:0; left:0; width:100%; height:100%; 
+            background: rgba(0,0,0,0.5); z-index: 9999; display: flex; 
+            align-items: center; justify-content: center; backdrop-filter: blur(2px);
+        }
+        .cp-modal { 
+            background: #fff; padding: 30px; border-radius: 15px; max-width: 500px; 
+            width: 90%; box-shadow: 0 10px 40px rgba(0,0,0,0.2); font-family: sans-serif; line-height: 1.6;
+        }
+        .cp-buttons { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+        .cp-btn { padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; transition: opacity 0.2s; }
+        .cp-btn-all { background: #2c3e50; color: #fff; }
+        .cp-btn-ess { background: #ecf0f1; color: #2c3e50; }
+        .cp-btn-rej { background: transparent; color: #7f8c8d; text-decoration: underline; font-size: 0.8em; }
+        
+        /* Posiciones */
+        .pos-inBottom { bottom: 20px; left: 50%; transform: translateX(-50%); }
+        .pos-inRight { right: 20px; top: 50%; transform: translateY(-50%); }
+        .pos-inLeft { left: 20px; top: 50%; transform: translateY(-50%); }
+        .pos-inTop { top: 20px; left: 50%; transform: translateX(-50%); }
+    `;
+
+    const styleSheet = document.createElement("style");
+    styleSheet.innerText = styles;
+    document.head.appendChild(styleSheet);
+
+    // 2. Crear el icono de la galleta (Trigger)
+    const banner = document.createElement('div');
+    banner.className = `cp-banner pos-${position}`;
+    banner.innerHTML = `<div class="cp-cookie-icon">🍪</div>`;
+    document.body.appendChild(banner);
+
+    // 3. Lógica para abrir el modal
+    banner.onclick = () => {
+        const overlay = document.createElement('div');
+        overlay.className = 'cp-overlay';
+        
+        // Extraer solo el primer párrafo para el impacto inicial
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = message;
+        const firstParagraph = tempDiv.querySelector('p')?.outerHTML || "";
+        const details = tempDiv.querySelector('details')?.outerHTML || "";
+
+        overlay.innerHTML = `
+            <div class="cp-modal">
+                <div class="cp-content">
+                    ${firstParagraph}
+                    ${details}
+                </div>
+                <div class="cp-buttons">
+                    <button class="cp-btn cp-btn-all" data-value="2">Aceptar todas</button>
+                    <button class="cp-btn cp-btn-ess" data-value="1">Aceptar esenciales</button>
+                    <button class="cp-btn cp-btn-rej" data-value="0">Rechazar todo</button>
+                </div>
+            </div>
+        `;
+
+        document.body.appendChild(overlay);
+
+        // 4. Lógica de los botones
+        overlay.querySelectorAll('.cp-btn').forEach(btn => {
+            btn.onclick = (e) => {
+                const val = e.target.getAttribute('data-value');
+                setCookie(COOKIE_NAME, val, 365);
+                document.body.removeChild(overlay);
+                document.body.removeChild(banner);
+                console.log(`Consentimiento guardado: ${val}`);
+            };
+        });
+    };
+
+    // Función auxiliar para setear cookies
+    function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        document.cookie = `${name}=${value};expires=${date.toUTCString()};path=/;SameSite=Lax`;
+    }
+};
