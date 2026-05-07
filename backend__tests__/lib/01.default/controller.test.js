@@ -19,12 +19,14 @@ const controller = require('../../../backend/lib/01.default/controller');
 const response = require('cl.jotacalderon.cf.framework/lib/response');
 
 describe('backend/lib/01.default/controller', () => {
+  const testDomain = 'archivospublicos.jotace.cl';
+
   let req, res;
 
   beforeEach(() => {
     req = {
       headers: {
-        host: 'archivospublicos.jotace.cl',
+        host: testDomain,
       },
     };
     res = {
@@ -38,7 +40,9 @@ describe('backend/lib/01.default/controller', () => {
   describe('favicon', () => {
     it('debería llamar sendFile con la ruta correcta', async () => {
       await controller.favicon(req, res);
-      expect(res.sendFile).toHaveBeenCalledWith(process.cwd() + '/frontend/assets/img/favicon.ico');
+      expect(res.sendFile).toHaveBeenCalledWith(
+        process.cwd() + '/frontend/' + testDomain + '/assets/img/favicon.ico'
+      );
     });
 
     it('debería llamar APIError si sendFile lanza un error', async () => {
