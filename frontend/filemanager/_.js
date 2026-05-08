@@ -94,7 +94,7 @@ filemanager.prototype.select = async function(li) {
 };
 
 filemanager.prototype.copyCleanURL = async function() {
-  await copyLarge(window.location.origin + '/assets/domains/' + (test_domain || window.location.host) + '/' + this.cleanURL);
+  await copyLarge(window.location.origin + this.cleanURL);
   alert('Url limpia copiada');
 }
 
