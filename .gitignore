@@ -7,3 +7,6 @@ frontend/assets/lib/node_modules/*
 
 # Cobertura de tests
 coverage/
+
+# Archivos propios de la app multidomain
+frontend/assets/domains/

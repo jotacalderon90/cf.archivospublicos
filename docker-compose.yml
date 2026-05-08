@@ -7,6 +7,8 @@ services:
       dockerfile: Dockerfile
     image: archivospublicos:0.0.1
     container_name: archivospublicos
+    volumes:
+      - ./frontend/assets/domains/:/srv/cf.archivospublicos/frontend/assets/domains
     env_file:
       - .env.production
     environment:
