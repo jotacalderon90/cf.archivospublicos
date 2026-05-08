@@ -9,7 +9,7 @@ module.exports = {
   favicon: async function (req, res) {
     try {
       const filepath =
-        process.cwd() + '/frontend/assets/' + req.headers.host + '/assets/img/favicon.ico';
+        process.cwd() + '/frontend/assets/domains/' + req.headers.host + '/assets/img/favicon.ico';
       if (!fs.existsSync(filepath)) {
         throw new Error(constants.error.rest.favicon_inexistente);
       } else {

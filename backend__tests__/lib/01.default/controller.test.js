@@ -41,7 +41,7 @@ describe('backend/lib/01.default/controller', () => {
     it('debería llamar sendFile con la ruta correcta', async () => {
       await controller.favicon(req, res);
       expect(res.sendFile).toHaveBeenCalledWith(
-        process.cwd() + '/frontend/assets/' + testDomain + '/assets/img/favicon.ico'
+        process.cwd() + '/frontend/assets/domains/' + testDomain + '/assets/img/favicon.ico'
       );
     });
 

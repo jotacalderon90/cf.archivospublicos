@@ -4,7 +4,7 @@ const service = require('../../backend/lib/filemanager');
 
 describe('backend/lib/filemanager', () => {
   const testDomain = 'domain.example.cl';
-  const baseDirectory = process.cwd() + '/frontend/assets/' + testDomain + '/';
+  const baseDirectory = process.cwd() + '/frontend/assets/domains/' + testDomain + '/';
 
   describe('get', () => {
     it('debería retornar la ruta correcta para un id en base64 válido', () => {
