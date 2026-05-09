@@ -20,7 +20,7 @@
     ]
   },
   "dependencies": {
-    "cl.jotacalderon.cf.framework": "0.0.92",
+    "cl.jotacalderon.cf.framework": "0.0.95",
     "zod": "4.1.12"
   },
   "devDependencies": {
