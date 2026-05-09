@@ -19,7 +19,7 @@ const controller = require('../../../backend/lib/01.default/controller');
 const response = require('cl.jotacalderon.cf.framework/lib/response');
 
 describe('backend/lib/01.default/controller', () => {
-  const testDomain = 'domain.example.cl';
+  const testDomain = 'archivospublicos.example.cl';
 
   let req, res;
 
