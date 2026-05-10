@@ -6,10 +6,6 @@
 
 <!--define:script-->
 
-<script>
-	const host = "{{data:process.env.HOST}}";
-  const test_domain = '{{data:process.env.TEST_HOST}}';
-</script>
 <script src="filemanager/_.js"></script>
 
 <!--/define:script-->
@@ -28,14 +24,6 @@
 
 			<!-- Barra de acciones -->
 			<div class="btn-group btn-group-sm mt-4 flex-wrap gap-1">
-
-
-
-
-
-
-
-
 
 				<a class="btn btn-outline-primary" target="_blank" title="Descargar" v-show="filemanager.isFile"
 					:href="filemanager.fullnameDOWNLOAD">

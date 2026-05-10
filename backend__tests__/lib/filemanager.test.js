@@ -3,7 +3,7 @@
 const service = require('../../backend/lib/filemanager');
 
 describe('backend/lib/filemanager', () => {
-  const testDomain = 'domain.example.cl';
+  const testDomain = 'archivospublicos.jotace.cl';
   const baseDirectory = process.cwd() + '/frontend/assets/domains/' + testDomain + '/';
 
   describe('get', () => {
