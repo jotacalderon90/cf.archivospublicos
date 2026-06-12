@@ -91,7 +91,7 @@ A[Sistema externo] --> B[Cargar recurso]
 En Windows puedes usar el script:
 
 ```bash
-script.ini.bat
+script.windows.ini.bat
 ```
 
 O manualmente:
