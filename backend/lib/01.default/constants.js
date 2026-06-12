@@ -2,8 +2,10 @@
 
 const constants = require('../constants');
 
-constants.error.rest.favicon = 'Error al obtener favicon';
-constants.error.rest.favicon_inexistente = 'Favicon no existe';
-constants.error.rest.robots = 'Error al obtener robots';
+const _constants = { ...constants };
 
-module.exports = constants;
+_constants.error.rest.favicon = 'Error al obtener favicon';
+_constants.error.rest.favicon_inexistente = 'Favicon no existe';
+_constants.error.rest.robots = 'Error al obtener robots';
+
+module.exports = _constants;

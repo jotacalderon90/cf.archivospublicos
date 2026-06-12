@@ -1,19 +1,19 @@
 'use strict';
 
 const fs = require('fs');
-const path = require('path');
+
 const logger = require('cl.jotacalderon.cf.framework/lib/log')(__filename);
-const constants = require('./constants');
+
 const filemanager = require('../filemanager');
+
+const constants = require('./constants');
 
 module.exports = {
   total: async function (input) {
     try {
       const dir = filemanager.get(input.id, input.host);
-
-      return fs.readdirSync(dir, 'utf8').filter(function (row) {
-        return fs.statSync(path.join(dir, row)).isFile();
-      }).length;
+      const entries = await fs.promises.readdir(dir, { withFileTypes: true });
+      return entries.filter((dirent) => dirent.isFile()).length;
     } catch (error) {
       logger.error(error);
       throw new Error(
@@ -28,9 +28,10 @@ module.exports = {
     try {
       const dir = filemanager.get(input.id, input.host);
 
-      return fs.readdirSync(dir, 'utf8').filter(function (row) {
-        return fs.statSync(path.join(dir, row)).isFile();
-      });
+      const entries = await fs.promises.readdir(dir, { withFileTypes: true });
+      const respuesta = entries.filter((dirent) => dirent.isFile()).map((dirent) => dirent.name);
+
+      return respuesta;
     } catch (error) {
       logger.error(error);
       throw new Error(
@@ -43,7 +44,8 @@ module.exports = {
 
   read: async function (input) {
     try {
-      return fs.readFileSync(filemanager.get(input.id, input.host), 'utf8');
+      const fileContent = await fs.promises.readFile(filemanager.get(input.id, input.host), 'utf8');
+      return fileContent;
     } catch (error) {
       logger.error(error);
       throw new Error(

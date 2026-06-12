@@ -2,6 +2,8 @@
 
 const constants = require('../constants');
 
-constants.error.rest.index = 'Error al generar pagina de inicio';
+const _constants = { ...constants };
 
-module.exports = constants;
+_constants.error.rest.index = 'Error al generar pagina de inicio';
+
+module.exports = _constants;
