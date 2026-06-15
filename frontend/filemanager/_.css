@@ -32,3 +32,6 @@
 #ul_directory .selected {
      color: grey;
 }
+.dv-visualcontent img {
+  max-width: 100%;
+}
