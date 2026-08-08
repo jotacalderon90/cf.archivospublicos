@@ -7,6 +7,8 @@ services:
       dockerfile: Dockerfile
     image: archivospublicos:0.0.1
     container_name: archivospublicos
+    mem_limit: 128M
+    mem_reservation: 64M
     volumes:
       - ./frontend/assets/domains/:/srv/cf.archivospublicos/frontend/assets/domains
     env_file:
