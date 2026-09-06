@@ -3,7 +3,7 @@ const filemanager = function() {
   this.service_folder_collection = createService('GET', ':path:id/collection');
   this.service_file_collection = createService('GET', ':path:id/collection');
   this.archive = null;
-  this.textFiles = ["txt", "html", "css", "js", "json", "csv", "md", "gitignore", "bowerrc"];
+  this.textFiles = ["txt", "html", "css", "js", "json", "csv", "md", "gitignore", "bowerrc", 'yml'];
   this.mediaFiles = ["jpg", "gif", "png", "ico", "webp", "mp3", "mp4", "pdf"];
 };
 
