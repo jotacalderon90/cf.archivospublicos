@@ -197,7 +197,6 @@ const createServices = function (baseurl) {
 }
 
 const basicGetter = async function (field, service, get, body) {
-	//try{
 	const response = await service(get, body,);
 	if (response.error) {
 		throw (response.message);
@@ -206,10 +205,6 @@ const basicGetter = async function (field, service, get, body) {
 	} else {
 		this[field] = response.contenido
 	}
-	//}catch(e){
-	//	myError("Error al obtener info", e.error || e.toString());
-	//	console.log(e);
-	//}	
 }
 
 const formatRowToFilter = function (r) {
@@ -461,7 +456,6 @@ const newRandom = function (length) {
 const getBase64 = function (file) {
 	return new Promise(function (resolve, reject) {
 		try {
-			console.log(file);
 			const reader = new FileReader();
 			reader.fileName = file.name
 			reader.readAsDataURL(file);
@@ -563,7 +557,6 @@ const downloadCSV = function (data, filename) {
 }
 //20251112:no recuerdo donde se usa
 const downloadXLSX = function (data, filename) {
-	console.log(data);
 	var workbook = XLSX.utils.book_new(),
 		worksheet = XLSX.utils.aoa_to_sheet(data);
 	workbook.SheetNames.push("First");

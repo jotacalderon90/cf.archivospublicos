@@ -54,6 +54,6 @@ $('body').delegate('#form_contact','submit', async function(event){
   }catch(error){
 		$('#loader').fadeOut();
 		alert('No se pudo generar la notificación, por favor contacte por otro medio');
-    console.log(error);
+    console.error(error);
 	}
 });

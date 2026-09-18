@@ -52,14 +52,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if(response.status != 200) {
       alert('Hubo un problema al aceptar las condiciones, por favor avise a un encargado, codigo: 1');
-      console.log(response);
+      console.error(response);
     }
     
     response = await response.json();
     
     if(!response.data) {
       alert('Hubo un problema al aceptar las condiciones, por favor avise a un encargado, codigo: 2');
-      console.log(response);
+      console.error(response);
     } 
     
     if (loader) loader.style.display = 'none';
