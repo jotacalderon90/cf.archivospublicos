@@ -13,6 +13,7 @@ module.exports = {
       const parseResult = validator.total.safeParse(req.params);
 
       if (!parseResult.success) {
+        logger.error(constants.error.validacion, req.headers.host);
         response.renderError(req, res, constants.error.validacion);
         return;
       }
@@ -21,7 +22,7 @@ module.exports = {
 
       res.send({ data: respuesta });
     } catch (error) {
-      logger.error(error);
+      logger.error(error, req.headers.host);
       response.renderError(
         req,
         res,
@@ -35,6 +36,7 @@ module.exports = {
       const parseResult = validator.collection.safeParse(req.params);
 
       if (!parseResult.success) {
+        logger.error(constants.error.validacion, req.headers.host);
         response.renderError(req, res, constants.error.validacion);
         return;
       }
@@ -43,7 +45,7 @@ module.exports = {
 
       res.send({ data: respuesta });
     } catch (error) {
-      logger.error(error);
+      logger.error(error, req.headers.host);
       response.renderError(
         req,
         res,

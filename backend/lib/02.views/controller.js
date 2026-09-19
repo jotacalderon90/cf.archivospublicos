@@ -9,7 +9,7 @@ module.exports = {
     try {
       res.render('filemanager/_');
     } catch (error) {
-      logger.error(error);
+      logger.error(error, req.headers.host);
       response.APIError(req, res, constants.error.rest.index + ' ' + constants.error.controlador);
     }
   },

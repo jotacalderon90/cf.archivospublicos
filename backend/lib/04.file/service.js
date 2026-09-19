@@ -15,7 +15,7 @@ module.exports = {
       const entries = await fs.promises.readdir(dir, { withFileTypes: true });
       return entries.filter((dirent) => dirent.isFile()).length;
     } catch (error) {
-      logger.error(error);
+      logger.error(error, input.host);
       throw new Error(
         error instanceof Error
           ? error.message
@@ -33,7 +33,7 @@ module.exports = {
 
       return respuesta;
     } catch (error) {
-      logger.error(error);
+      logger.error(error, input.host);
       throw new Error(
         error instanceof Error
           ? error.message
@@ -47,7 +47,7 @@ module.exports = {
       const fileContent = await fs.promises.readFile(filemanager.get(input.id, input.host), 'utf8');
       return fileContent;
     } catch (error) {
-      logger.error(error);
+      logger.error(error, input.host);
       throw new Error(
         error instanceof Error
           ? error.message
@@ -60,7 +60,7 @@ module.exports = {
     try {
       return filemanager.get(input.id, input.host);
     } catch (error) {
-      logger.error(error);
+      logger.error(error, input.host);
       throw new Error(
         error instanceof Error
           ? error.message
@@ -73,7 +73,7 @@ module.exports = {
     try {
       return filemanager.get(input.id, input.host);
     } catch (error) {
-      logger.error(error);
+      logger.error(error, input.host);
       throw new Error(
         error instanceof Error
           ? error.message

@@ -33,7 +33,7 @@ module.exports = {
 
       throw new Error(constants.error.rest.favicon_inexistente);
     } catch (error) {
-      logger.error(error);
+      logger.error(error, req.headers.host);
       response.APIError(req, res, constants.error.rest.favicon + ' ' + constants.error.controlador);
     }
   },
@@ -43,7 +43,7 @@ module.exports = {
       res.setHeader('content-type', 'text/plain');
       res.send('User-agent: *\n\nDisallow: /');
     } catch (error) {
-      logger.error(error);
+      logger.error(error, req.headers.host);
       response.APIError(req, res, constants.error.rest.robots + ' ' + constants.error.controlador);
     }
   },

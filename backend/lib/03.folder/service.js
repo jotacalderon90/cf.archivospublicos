@@ -17,7 +17,7 @@ module.exports = {
 
       return entries.filter((dirent) => !dirent.isFile()).length;
     } catch (error) {
-      logger.error(error);
+      logger.error(error, input.host);
       throw new Error(
         error instanceof Error
           ? error.message
@@ -36,7 +36,7 @@ module.exports = {
 
       return respuesta;
     } catch (error) {
-      logger.error(error);
+      logger.error(error, input.host);
       throw new Error(
         error instanceof Error
           ? error.message
