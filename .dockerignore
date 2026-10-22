@@ -10,4 +10,4 @@ logs
 tests
 coverage
 *.md
-.env
+.env*

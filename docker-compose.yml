@@ -4,17 +4,18 @@ services:
   archivospublicos:
     build:
       context: .
-      dockerfile: Dockerfile
+      target: prod
     image: archivospublicos:0.0.1
     container_name: archivospublicos
+    restart: unless-stopped
     mem_limit: 128M
     mem_reservation: 64M
-    volumes:
-      - ./frontend/assets/domains/:/srv/cf.archivospublicos/frontend/assets/domains
     env_file:
       - .env.production
+    volumes:
+      - ./frontend/assets/domains/:/srv/cf.archivospublicos/frontend/assets/domains
     environment:
       NODE_ENV: "production"
-      PORT: ${PORT:-2201}
+      PORT: 2201
     ports:
       - "127.0.0.1:2201:2201"
