@@ -13,7 +13,7 @@ services:
     env_file:
       - .env.production
     volumes:
-      - ./frontend/assets/domains/:/srv/cf.archivospublicos/frontend/assets/domains
+      - /var/log/trascender/archivospublicos:/srv/cf.archivospublicos/logs
     environment:
       NODE_ENV: "production"
       PORT: 2201
