@@ -7,7 +7,6 @@ COPY frontend/assets/lib/package*.json frontend/assets/lib/
 FROM base AS dev
 ENV NODE_ENV=development
 RUN npm ci && npm ci -C frontend/assets/lib
-USER node
 CMD ["npm", "run", "dev"]
 
 # ---- Producción ----
