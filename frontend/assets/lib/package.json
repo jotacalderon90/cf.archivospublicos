@@ -1,0 +1,23 @@
+{
+	"name": "cl.jotacalderon.cf.archivospublicos.frontend",
+	"description": "frontend de archivos publicos para paginas web",
+	"version": "0.0.1",
+	"private": true,
+	"dependencies": {
+		"jquery": "3.7.1",
+		"jquery-ui-dist": "1.13.3",
+		"bootstrap": "5.3.8",
+		"@fortawesome/fontawesome-free": "7.3.1",
+		"luxon": "3.7.2",
+		"vue": "3.5.44",
+    "summernote": "0.9.1",
+		"gojs": "4.0.5",
+		"leaflet": "1.9.4",
+		"leaflet-draw": "1.0.4",
+		"socket.io": "4.8.4",
+    "chart.js": "4.6.1"
+	},
+  "overrides": {
+    "postcss": "^8.5.23"
+  }
+}

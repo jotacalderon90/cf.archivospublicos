@@ -1,0 +1,43 @@
+{
+  "definition": {
+    "openapi": "3.0.0",
+    "info": {
+      "title": "cf.archivospublicos",
+      "version": "1.0.0",
+      "description": "Documentación del backend",
+      "contact": {
+        "name": "Jhonatan Calderón Leiva",
+        "email": "info@jotace.cl"
+      },
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "servers": [
+      {
+        "url": "http://172.27.16.1:2201",
+        "description": "Servidor local"
+      }
+    ],
+    "tags": [
+      {
+        "name": "Default",
+        "description": "Servicios genericos"
+      },
+      {
+        "name": "Views",
+        "description": "Vistas del sistema"
+      },
+      {
+        "name": "Folder",
+        "description": "Rest públicas para carpetas"
+      },
+      {
+        "name": "File",
+        "description": "Rest públicas para archivos"
+      }
+    ]
+  },
+  "apis": ["./backend/*.js"]
+}
