@@ -4,7 +4,7 @@ const filemanager = function() {
   this.service_file_collection = createService('GET', ':path:id/collection');
   this.archive = null;
   this.textFiles = ['txt', 'html', 'css', 'js', 'json', 'csv', 'md', 'gitignore', 'bowerrc', 'log', 'yml'];
-  this.mediaFiles = ["jpg", "gif", "png", "ico", "webp", "mp3", "mp4", "pdf"];
+  this.mediaFiles = ["jpg", "jpeg", "gif", "png", "ico", "webp", "mp3", "mp4", "pdf"];
 };
 
 filemanager.prototype.start = async function(parent) {
@@ -61,6 +61,7 @@ filemanager.prototype.select = async function(li) {
         let child;
         switch (this.type) {
           case "jpg":
+          case "jpeg":
           case "png":
           case "gif":
           case "ico":
