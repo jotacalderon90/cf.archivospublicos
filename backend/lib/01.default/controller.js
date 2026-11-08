@@ -31,7 +31,7 @@ module.exports = {
         return;
       }
 
-      throw new Error(constants.error.rest.favicon_inexistente);
+      throw new Error(constants.error.rest.favicon_inexistente + ' para ' + req.headers.host);
     } catch (error) {
       logger.error(error, req.headers.host);
       response.APIError(req, res, constants.error.rest.favicon + ' ' + constants.error.controlador);
