@@ -4,7 +4,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"dependencies": {
-		"jquery": "3.7.1",
+		"jquery": "4.1.0",
 		"jquery-ui-dist": "1.13.3",
 		"bootstrap": "5.3.9",
 		"@fortawesome/fontawesome-free": "7.3.1",
